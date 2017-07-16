@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+
+    /* h2 p body tr */
+    
+
+    h2   {color: bloack;
+          font-family: 微軟正黑體;
+          font-size: 36px;
+          word-spacing: 30px}
+          
+    h1 {color: red;
+          font-family: 微軟正黑體;
+          font-size: 32px;
+          word-spacing: 30px}
+          
+    p    {font-size: 20px; font-family:微軟正黑體;}
+    //body {font-family: "微軟正黑體", sans-serif;font-size: 100%;}
+    
+    
+    div#first{
+        background-image: url('https://www.fubon.com/financialholdings/Content/img/home/kv-taipei.jpg');
+        background-repeat: no-repeat;
+        opacity:0.2;
+        width:1500px;
+        height:1000px;
+    }
+    
+    tr:nth-child(1) {
+        background: #ff9999;
+    }
+
+    tr:nth-child(even) {
+        background: #ffff99;
+    }
+
+    
+
+    /* Style the horizontal_tab */
+    div.horizontal_tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+    
+    /* Style the buttons inside the horizontal_tab */
+    div.horizontal_tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: dotted;
+        outline-color: steelblue;
+        cursor: pointer;
+        padding: 18px 60px;
+        transition: 2s;
+        font-size: 20px;
+        font-family: 微軟正黑體;
+    }
+    
+    /* Change background color of buttons on hover */
+    div.horizontal_tab button:hover {
+        background-color: #ddd;
+    }
+    
+    /* Create an active/current tablink class */
+    div.horizontal_tab button.active {
+        background-color: #ccc;
+    }
+    
+    /* Style the tab content */
+    .horizontal_tabcontent {
+        display: none;
+        padding: 6px 12px;
+        -webkit-animation: fadeEffect 1s;
+        animation: fadeEffect 1s;
+    }
+
+    /* Fade in tabs */
+    @-webkit-keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    
+    @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+
+    /* Style the tab content  資料表*/
+    .tabcontent {
+        display:none;
+        float: left;
+        padding: 0px 40px;
+        //border: 1px solid #ccc;
+        width: 70%;
+        border-left: none;
+        height: 100px;
+        margin-top : 0;
+    }
+
+
+    /* Style the tab */
+    div.vertical_tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 13%;
+        height: 100%;
+        margin-top :0px;
+    }
+
+    /* Style the buttons inside the tab */
+    div.vertical_tab button {
+        display: block;
+        background-color: #ccebff;
+        color: black;
+        padding: 22px 16px;
+
+        width: 110%;
+        border: 0.5px solid #005ce6;
+        outline: none;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 20px;
+    }
+
+    /* Change background color of buttons on hover */
+    div.vertical_tab button:hover {
+        background-color: #ddd;
+    }
+
+    /* Create an active/current "tab button" class */
+    div.vertical_tab button.active {
+        background-color: #ccc;
+    }
+    
+    
+    
+    
+
+    /* 關注議題顏色與文字*/
+  input[type=text] {
+    width: 500px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 30px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 20px 20px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    font-family: "微軟正黑體";
+    }
+    
+    /* When the input field gets focus, change its width to 100% */
+    input[type=text]:focus {
+        width: 100%;
+    }
+
+    .info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    }
+    
+    
+     /* side Navigation*/
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 100px;
+    }
+    
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #9bb4e8;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidenav a:hover, .offcanvas a:focus{
+        color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 50px;
+        margin-left: 50px;
+        color: red;
+    }
+    
+    @media screen and (max-height: 650px) {
+      .sidenav {padding-top: 5px;}
+      .sidenav a {font-size: 18px;}
+    }
+        
+
+
+    
+</style>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+
+</head>
+<body>
+<div id="first"><a href="#top">進入金控-資訊觀測平台</a> </div>
+<!--富邦圖片 -->
+<h2 id="top" align="center" >  <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/7/70/Fubon_Group.svg/989px-Fubon_Group.svg.png" alt="fubon" style="width:60px;height:60px;" >  富邦金控-資訊處</h2>
+
+<h1 >金控－資訊觀測平台</h1>
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <img src="https://www.fubon.com/financialholdings/Content/img/home/gallery-news.jpg" alt="fubon" style="width:600px;height:400px;" >
+
+    <div style="position:relative;height:0;padding-bottom:90.25%">
+        <iframe src="https://www.youtube.com/embed/VljJvoHlJWQ?ecver=1" width="300" height="400" frameborder="0" style="position:absolute;width:100%;height:100%;left:0px" allowfullscreen></iframe>
+    </div>  
+    
+
+</div>
+<span style="font-size:25px;cursor:pointer;font-family:微軟正黑體"  onclick="openNav()">&#9776; 關於富邦</span>
+
+
+
+
+
+
+
+
+
+
+<!--單位 -->
+<br>
+<br>
+<div class="horizontal_tab">
+  <button class="horizontal_tablinks" onclick="horizontal(event, '科技應用科')">科技應用科</button>
+  <button class="horizontal_tablinks" onclick="horizontal(event, '系統管理科')">系統管理科</button>
+  <button class="horizontal_tablinks" onclick="horizontal(event, '資安綜合科')">資安綜合科</button>
+  <button class="horizontal_tablinks" onclick="horizontal(event, '資料分析科')">資料分析科</button>
+  <button class="horizontal_tablinks" onclick="horizontal(event, '共同作業科')">共同作業科</button>
+  <button class="horizontal_tablinks" onclick="horizontal(event, '風控資訊科')">風控資訊科</button>
+</div>
+
+<div id="科技應用科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+  <!--<p>金融科技、區塊鏈、理財機器人、大數據</p>-->
+    <div class="info">
+        <p><strong>金融科技、區塊鏈、理財機器人、大數據</strong></p>
+    </div>
+</div>
+
+<div id="系統管理科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+    <div class="info">
+        <p><strong></strong></p>
+    </div>
+</div>
+
+<div id="資安綜合科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+    <div class="info">
+        <p><strong></strong></p>
+    </div>
+</div>
+
+<div id="資料分析科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+    <div class="info">
+        <p><strong>行動支付、監理沙盒</strong></p>
+    </div>
+</div>
+
+<div id="共同作業科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+    <div class="info">
+        <p><strong></strong></p>
+    </div>
+</div>
+
+<div id="風控資訊科" class="horizontal_tabcontent">
+  <h3>關注議題:</h3>
+    <div class="info">
+        <p><strong></strong></p>
+    </div>
+</div>
+
+
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="輸入您要搜尋的主題" >
+
+
+
+
+<!--插入表單 -->
+<ul id="myUL">
+    <div class="vertical_tab">
+        <button class="vertical_tablinks" onclick="openCity(event, 'udn_fintech')" id="defaultOpen">
+        <h3>udn財經新聞監測<br>(金融科技)</h3>
+        </button>
+        
+        <button class="vertical_tablinks" onclick="openCity(event, 'udn_latest')">
+          <h3>udn即時新聞<br>(熱門排行)</h3>
+          
+        </button>
+          <button class="vertical_tablinks" onclick="openCity(event, 'TechOrange_AI')">
+          <h3>科技橘報<br>(人工智慧)</h3>
+        </button>
+          <button class="vertical_tablinks" onclick="openCity(event, 'google_search_Robo_Advisor')">
+          <h3>google<br> 理財機器人<br>(最近)</h3>
+        </button>
+        <button class="vertical_tablinks" onclick="openCity(event, 'google_search_blockchain')">
+          <h3>google<br> 區塊鏈<br>(最近)</h3>
+        </button>
+        <button class="vertical_tablinks" onclick="openCity(event, 'google_search_bigdata')">
+          <h3>google<br> 大數據<br>(最近)</h3>
+        </button>
+        <button class="vertical_tablinks" onclick="openCity(event, 'CTIMES')">
+          <h3>CTIMES<br> 電子產業社群平台<br>(第一頁)</h3>
+        </button>
+         <button class="vertical_tablinks" onclick="openCity(event, 'google_search_payment')">
+          <h3>行動支付<br>電子支付<br>第三方支付<br>(近一週)</h3>
+        </button>   
+            
+        <button class="vertical_tablinks" onclick="openCity(event, 'google_search_regulatory_sandbox')">
+          <h3>google<br>監理沙盒<br>(近一個月)</h3>
+        </button> 
+        
+        <button class="vertical_tablinks" onclick="openCity(event, 'youtube_tvbs_t')">
+          <h3>YouTube<br>T觀點</h3>
+        </button>
+               
+    </div>
+</ul>
+
+
+
+<!--寫入資料 -->
+<!--1 -->
+<div id="udn_fintech" class="tabcontent">
+<h2>1.udn財經新聞監測(金融科技)</h2>
+<table width=800 border=10>
+<tr><td>索引</td><td>日期</td><td>標題</td></tr>
+
+
+
+
+<tr><td>0</td><td>2017-07-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8780810&ptname=金融科技 target='_blank'>台達電智慧工廠 邁大步</a></td></tr><tr><td>1</td><td>2017-07-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8780939&ptname=金融科技 target='_blank'>機器人投顧 大拇哥成軍</a></td></tr><tr><td>2</td><td>2017-07-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8781169&ptname=金融科技 target='_blank'>FinTech跨國匯款 韓開大門</a></td></tr><tr><td>3</td><td>2017-07-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8781103&ptname=金融科技 target='_blank'>威盛保經總經理 王力信 創造溫度 滿足客戶</a></td></tr><tr><td>4</td><td>2017-07-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8780942&ptname=金融科技 target='_blank'>基富通證券評估合作</a></td></tr><tr><td>5</td><td>2017-07-13</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8780276&ptname=金融科技 target='_blank'>跨境電商稅制應接軌國際</a></td></tr><tr><td>6</td><td>2017-07-13</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2580565&ptname=金融科技 target='_blank'>謝金河：陶冬沒支付寶 鄭州機場餓肚子</a></td></tr><tr><td>7</td><td>2017-07-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2579594&ptname=金融科技 target='_blank'>謝金河買台積電股票送媽媽 6萬變600萬</a></td></tr><tr><td>8</td><td>2017-07-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2579050&ptname=金融科技 target='_blank'>無現金交易普遍 謝金河：小偷抱怨杭州窮已成笑話</a></td></tr><tr><td>9</td><td>2017-07-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8779230&ptname=金融科技 target='_blank'>金融鏈生態圈的大趨勢</a></td></tr><tr><td>10</td><td>2017-07-11</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8777853&ptname=金融科技 target='_blank'>安馳今年營收 挑戰新高</a></td></tr><tr><td>11</td><td>2017-07-11</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8778002&ptname=金融科技 target='_blank'>科技基金表現正點</a></td></tr><tr><td>12</td><td>2017-07-11</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8778022&ptname=金融科技 target='_blank'>群益證 免臨櫃即時通</a></td></tr><tr><td>13</td><td>2017-07-11</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2577088&ptname=金融科技 target='_blank'>Money101獲阿里巴巴等資金挹注15.3億元</a></td></tr><tr><td>14</td><td>2017-07-10</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8777387&ptname=金融科技 target='_blank'>陸首家網銀 微眾賺錢了</a></td></tr><tr><td>15</td><td>2017-07-10</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2573969&ptname=金融科技 target='_blank'>美國科技基金今年來表現仍旺  回檔為布局良機</a></td></tr><tr><td>16</td><td>2017-07-10</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8777343&ptname=金融科技 target='_blank'>法巴投顧 重塑品牌 深耕台灣</a></td></tr><tr><td>17</td><td>2017-07-10</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8777296&ptname=金融科技 target='_blank'>安泰銀玉山金 閃亮</a></td></tr><tr><td>18</td><td>2017-07-10</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8777344&ptname=金融科技 target='_blank'>財管掀戰火 機器人單挑理專</a></td></tr><tr><td>19</td><td>2017-07-09</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2573296&ptname=金融科技 target='_blank'>新創需跨大腳步 陳良基盼產創條例速過</a></td></tr><tr><td>20</td><td>2017-07-07</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8774972&ptname=金融科技 target='_blank'>中國新型全球化…G20峰會大戲</a></td></tr><tr><td>21</td><td>2017-07-07</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8774582&ptname=金融科技 target='_blank'>FinTalks CEO高峰論壇 7/18登場</a></td></tr><tr><td>22</td><td>2017-07-07</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2570051&ptname=金融科技 target='_blank'>群益證 「免臨櫃即時通」線上開戶24hr無障</a></td></tr><tr><td>23</td><td>2017-07-06</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2567343&ptname=金融科技 target='_blank'>科技部設數個AI創研中心 5年估砸50億</a></td></tr><tr><td>24</td><td>2017-07-06</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8773633&ptname=金融科技 target='_blank'>智慧醫院發展論壇21日登場</a></td></tr><tr><td>25</td><td>2017-07-06</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8774055&ptname=金融科技 target='_blank'>整併潮引爆 爭市場主導權</a></td></tr><tr><td>26</td><td>2017-07-06</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8774053&ptname=金融科技 target='_blank'>百億美元 美支付大咖併英同業</a></td></tr><tr><td>27</td><td>2017-07-05</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8773122&ptname=金融科技 target='_blank'>陸銀網路巨頭 對手變牽手</a></td></tr><tr><td>28</td><td>2017-07-05</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8773124&ptname=金融科技 target='_blank'>Apple Pay吃癟 支付寶微信當紅</a></td></tr><tr><td>29</td><td>2017-07-05</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8773084&ptname=金融科技 target='_blank'>EMBA掌握趨勢 瞄準生醫FinTech</a></td></tr><tr><td>30</td><td>2017-07-05</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8772848&ptname=金融科技 target='_blank'>同亨樺漢夯 押長天期</a></td></tr><tr><td>31</td><td>2017-07-04</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2563658&ptname=金融科技 target='_blank'>銀行公會赴倫敦舉辦法遵研討會 與歐洲菁英熱烈交流</a></td></tr><tr><td>32</td><td>2017-07-04</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8772025&ptname=金融科技 target='_blank'>天逸 推電子函證平台</a></td></tr><tr><td>33</td><td>2017-07-04</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2563887&ptname=金融科技 target='_blank'>銀行公會推海外分區經理人、法遵人員暨內稽內控研討會</a></td></tr><tr><td>34</td><td>2017-07-03</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2560988&ptname=金融科技 target='_blank'>迎接金融科技大未來 高峰論壇18日登場</a></td></tr><tr><td>35</td><td>2017-07-03</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8771387&ptname=金融科技 target='_blank'>旅平險保額上限增 業者利多</a></td></tr><tr><td>36</td><td>2017-07-03</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8771292&ptname=金融科技 target='_blank'>上海商銀  百年老行 四招活血</a></td></tr><tr><td>37</td><td>2017-07-03</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2560426&ptname=金融科技 target='_blank'>銀行拚雲端貸款 台新數位房貸車貸信貸全數到位</a></td></tr><tr><td>38</td><td>2017-07-01</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2558383&ptname=金融科技 target='_blank'>中國信託全盤靠人工智慧自主投資的機器人理財還在實驗</a></td></tr><tr><td>39</td><td>2017-06-29</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2554399&ptname=金融科技 target='_blank'>KPMG調查 八成台灣CEO更注重「創新」</a></td></tr><tr><td>40</td><td>2017-06-29</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8768038&ptname=金融科技 target='_blank'>星銀行投資電商 大鬆綁</a></td></tr><tr><td>41</td><td>2017-06-29</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8768042&ptname=金融科技 target='_blank'>一銀FinTech報捷 連二月賺錢</a></td></tr><tr><td>42</td><td>2017-06-29</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8768051&ptname=金融科技 target='_blank'>P2P鄉民貸 投報率8.8%</a></td></tr><tr><td>43</td><td>2017-06-29</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8767747&ptname=金融科技 target='_blank'>驚奇指數低檔鈍化 資金向大型成長股靠攏</a></td></tr><tr><td>44</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8766994&ptname=金融科技 target='_blank'>行動支付QR Code規格將統一</a></td></tr><tr><td>45</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8766995&ptname=金融科技 target='_blank'>蘇海德：FinTech發展 三關鍵</a></td></tr><tr><td>46</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2551570&ptname=金融科技 target='_blank'>中小企業總會理事長林慧瑛：從憂心轉無奈 對政府有4問</a></td></tr><tr><td>47</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8766638&ptname=金融科技 target='_blank'>玉山SAS大數據競賽 台大奪魁</a></td></tr><tr><td>48</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2551836&ptname=金融科技 target='_blank'>P2P鄉民貸執行長黃智康 過去1年沒讓1人賠錢</a></td></tr><tr><td>49</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2552456&ptname=金融科技 target='_blank'>這台機器好厲害 零售業四大功能一次搞定</a></td></tr><tr><td>50</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2551903&ptname=金融科技 target='_blank'>P2P網路借貸平台借款人 以兩類為大宗</a></td></tr><tr><td>51</td><td>2017-06-28</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8767000&ptname=金融科技 target='_blank'>富邦金攻區塊鏈 進展大</a></td></tr><tr><td>52</td><td>2017-06-27</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8765669&ptname=金融科技 target='_blank'>群益期外匯高峰會 剖析趨勢</a></td></tr><tr><td>53</td><td>2017-06-27</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8765711&ptname=金融科技 target='_blank'>精誠攜手晨星 推機器人理財</a></td></tr><tr><td>54</td><td>2017-06-27</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8765739&ptname=金融科技 target='_blank'>資訊月線上報名 7/7截止申請</a></td></tr><tr><td>55</td><td>2017-06-27</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2549614&ptname=金融科技 target='_blank'>FinTechBase 召募第三梯次新創團隊</a></td></tr><tr><td>56</td><td>2017-06-26</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8765231&ptname=金融科技 target='_blank'>總統指示 鬆綁金融法規</a></td></tr><tr><td>57</td><td>2017-06-26</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2547427&ptname=金融科技 target='_blank'>群益期貨 Capital 20高峰會登場</a></td></tr><tr><td>58</td><td>2017-06-26</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2547713&ptname=金融科技 target='_blank'>群益期貨矢志成為金融科技期貨商</a></td></tr><tr><td>59</td><td>2017-06-24</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8763699&ptname=金融科技 target='_blank'>兩岸自貿論壇 找合作出路</a></td></tr><tr><td>60</td><td>2017-06-24</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8763680&ptname=金融科技 target='_blank'>許柏林 台灣金融業邁向MBA</a></td></tr><tr><td>61</td><td>2017-06-23</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8762811&ptname=金融科技 target='_blank'>貨幣死亡交叉 央行說免驚</a></td></tr><tr><td>62</td><td>2017-06-23</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8762813&ptname=金融科技 target='_blank'>金融科技當道 影響力式微</a></td></tr><tr><td>63</td><td>2017-06-23</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8762835&ptname=金融科技 target='_blank'>台灣拚AI 善用兩優勢</a></td></tr><tr><td>64</td><td>2017-06-22</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8761837&ptname=金融科技 target='_blank'>外銀槓國銀 大動作搶市</a></td></tr><tr><td>65</td><td>2017-06-22</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8761560&ptname=金融科技 target='_blank'>NN投資夥伴產學合作 培育台灣金融人才</a></td></tr><tr><td>66</td><td>2017-06-21</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8760759&ptname=金融科技 target='_blank'>農行揪百度 合攻FinTech</a></td></tr><tr><td>67</td><td>2017-06-21</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8760517&ptname=金融科技 target='_blank'>搶攻數位金融 怡富力推P2P商品</a></td></tr><tr><td>68</td><td>2017-06-21</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8760465&ptname=金融科技 target='_blank'>土銀金速Pay 刷卡金回饋</a></td></tr><tr><td>69</td><td>2017-06-21</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2538130&ptname=金融科技 target='_blank'>富邦金研發 區塊鏈叫車服務</a></td></tr><tr><td>70</td><td>2017-06-20</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8759519&ptname=金融科技 target='_blank'>日盛證 ETF競賽第二名</a></td></tr><tr><td>71</td><td>2017-06-20</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2536045&ptname=金融科技 target='_blank'>兩岸關係冷凍 外銀坦言做得辛苦</a></td></tr><tr><td>72</td><td>2017-06-19</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2533610&ptname=金融科技 target='_blank'>國票金今年布局CP2CP平台</a></td></tr><tr><td>73</td><td>2017-06-17</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8757560&ptname=金融科技 target='_blank'>國泰金大賺 蔡宏圖嘆股價低</a></td></tr><tr><td>74</td><td>2017-06-17</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8757360&ptname=金融科技 target='_blank'>康和證轉骨 業績拚翻倍</a></td></tr><tr><td>75</td><td>2017-06-16</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2528582&ptname=金融科技 target='_blank'>NN投資夥伴攜手中央大學 成立金融研究中心</a></td></tr><tr><td>76</td><td>2017-06-16</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8756702&ptname=金融科技 target='_blank'>快樂卡40萬張 今年可達標</a></td></tr><tr><td>77</td><td>2017-06-16</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2529234&ptname=金融科技 target='_blank'>陸家嘴金融論壇20日登場 首度納入一帶一路議題</a></td></tr><tr><td>78</td><td>2017-06-15</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2525353&ptname=金融科技 target='_blank'>兩金控下半年搶消金 AI大數據當道</a></td></tr><tr><td>79</td><td>2017-06-15</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8755393&ptname=金融科技 target='_blank'>公司治理評鑑 日盛金控三連霸</a></td></tr><tr><td>80</td><td>2017-06-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8754711&ptname=金融科技 target='_blank'>羅寶珠：金融+科技 創新產品</a></td></tr><tr><td>81</td><td>2017-06-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8754715&ptname=金融科技 target='_blank'>王儷玲：借力使力 產業雙贏</a></td></tr><tr><td>82</td><td>2017-06-14</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8754498&ptname=金融科技 target='_blank'>台股ETF 上月規模躍增</a></td></tr><tr><td>83</td><td>2017-06-13</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2520768&ptname=金融科技 target='_blank'>台灣Q3就業展望  萬寶華：金融不動產人力需求居首</a></td></tr><tr><td>84</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8752956&ptname=金融科技 target='_blank'>國泰富邦金 樂觀看景氣</a></td></tr><tr><td>85</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2519848&ptname=金融科技 target='_blank'>土銀開辦金速Pay-HCE手機銀行信用卡</a></td></tr><tr><td>86</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8752959&ptname=金融科技 target='_blank'>法遵Fintech 今年課題</a></td></tr><tr><td>87</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8752705&ptname=金融科技 target='_blank'>黑天鵝蠢動 多元資產基金勇</a></td></tr><tr><td>88</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=2520207&ptname=金融科技 target='_blank'>基富通決議提高實收資本額至6億</a></td></tr><tr><td>89</td><td>2017-06-12</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8752851&ptname=金融科技 target='_blank'>陳瑞隆王儷玲 參與盛會</a></td></tr><tr><td>90</td><td>2017-06-09</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8750404&ptname=金融科技 target='_blank'>機器智能 打造普惠金融時代</a></td></tr><tr><td>91</td><td>2017-06-08</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8749515&ptname=金融科技 target='_blank'>下半年徵才百人 聚焦法遵FinTech</a></td></tr><tr><td>92</td><td>2017-06-06</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8747400&ptname=金融科技 target='_blank'>第一金FinTech基金  鎖定行動支付商機</a></td></tr><tr><td>93</td><td>2017-06-05</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8746801&ptname=金融科技 target='_blank'>富邦證有感創新 服務進化</a></td></tr><tr><td>94</td><td>2017-06-04</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8745984&ptname=金融科技 target='_blank'>人行貨幣政策 將鬆緊適中</a></td></tr><tr><td>95</td><td>2017-06-02</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8744060&ptname=金融科技 target='_blank'>TWID推銀行帳戶線上約定服務</a></td></tr><tr><td>96</td><td>2017-06-02</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8744311&ptname=金融科技 target='_blank'>獨特產業 布局新亮點</a></td></tr><tr><td>97</td><td>2017-06-02</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8744350&ptname=金融科技 target='_blank'>華南金總座 羅寶珠ART出擊</a></td></tr><tr><td>98</td><td>2017-06-02</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8744403&ptname=金融科技 target='_blank'>FinTech興起 金融業的變與不變</a></td></tr><tr><td>99</td><td>2017-06-01</td><td><a href=https://udndata.com/ndapp/udntag/finance/Article?origid=8743213&ptname=金融科技 target='_blank'>股神點名 科技基金掀認錯行情</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+<!--1結束-->
+
+
+<!--2 -->
+<div id="udn_latest" class="tabcontent">
+<h2>2.udn即時新聞(熱門排行)</h2>
+<table width=800 border=10>
+<tr><td>日期</td><td>標題</td><td>點閱數</td></tr>
+<tr><td>07-14 01:15</td><td><a href=https://udn.com/news/story/10756/2582594?from=udn-ch1_breaknews-1-0-news target='_blank'>遭掌摑邱議瑩連發三文討拍 網友一面倒挺許淑華</a></td><td>66251</td></tr><tr><td>07-13 20:07</td><td><a href=https://udn.com/news/story/6656/2581920?from=udn-ch1_breaknews-1-0-news target='_blank'>台灣無外交？包正豪嗆劉樂妍：你父親半生戎馬保衛啥</a></td><td>42829</td></tr><tr><td>07-13 21:34</td><td><a href=https://udn.com/news/story/11251/2582096?from=udn-ch1_breaknews-1-0-news target='_blank'>大陸官方證實 諾貝爾和平獎得主劉曉波今天逝世</a></td><td>35993</td></tr><tr><td>07-13 22:22</td><td><a href=https://udn.com/news/story/10756/2582236?from=udn-ch1_breaknews-1-0-news target='_blank'>小英曾挺邱議瑩打人 藍讚許淑華符合「英式標準」</a></td><td>20630</td></tr><tr><td>07-13 18:31</td><td><a href=https://udn.com/news/story/10756/2581770?from=udn-ch1_breaknews-1-0-news target='_blank'>許淑華委員打邱議瑩一巴掌 蔡正元：這就對了</a></td><td>16725</td></tr><tr><td>07-13 20:55</td><td><a href=https://udn.com/news/story/10756/2582013?from=udn-ch1_breaknews-1-0-news target='_blank'>立院衝突許淑華這一掌有亮點 警：好像穿手撐篙逮捕術</a></td><td>15112</td></tr><tr><td>07-13 18:05</td><td><a href=https://udn.com/news/story/7266/2581249?from=udn-ch1_breaknews-1-0-news target='_blank'>Obike與Ubike大比較 它真的有比較好用嗎？</a></td><td>14667</td></tr><tr><td>07-13 23:45</td><td><a href=https://udn.com/news/story/7321/2582526?from=udn-ch1_breaknews-1-0-news target='_blank'>嘉市維欣牙醫疑詐百萬健保費 檢聲押院長夫妻</a></td><td>11748</td></tr><tr><td>07-13 20:11</td><td><a href=https://udn.com/news/story/6656/2581922?from=udn-ch1_breaknews-1-0-news target='_blank'>獨派扮軍人主張軍歌要有台灣元素 退將揶揄：入伍啊</a></td><td>11623</td></tr><tr><td>07-13 19:27</td><td><a href=https://udn.com/news/story/11251/2581798?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波做了什麼 大陸鮮少有人知道</a></td><td>11151</td></tr><tr><td>07-14 07:11</td><td><a href=https://udn.com/news/story/10756/2582640?from=udn-ch1_breaknews-1-0-news target='_blank'>邱議瑩遭許淑華呼巴掌 侯漢廷：她踹門比中指又怎說？</a></td><td>10551</td></tr><tr><td>07-13 22:36</td><td><a href=https://udn.com/news/story/10930/2582288?from=udn-ch1_breaknews-1-0-news target='_blank'>慘！陸軍官校今年招生成績 不到目標一半</a></td><td>10433</td></tr><tr><td>07-13 17:20</td><td><a href=https://udn.com/news/story/6656/2581487?from=udn-ch1_breaknews-1-0-news target='_blank'>麵包店捕獲野生賴清德 網笑：像小孩等媽媽買東西</a></td><td>8132</td></tr><tr><td>07-14 08:42</td><td><a href=https://udn.com/news/story/11247/2582677?from=udn-ch1_breaknews-1-0-news target='_blank'>MLB／有林子偉就夠 紅襪釋出三壘老將培洛塔</a></td><td>7313</td></tr><tr><td>07-13 21:57</td><td><a href=https://udn.com/news/story/11251/2582129?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波的死 揭開中國夢醜惡面</a></td><td>6611</td></tr><tr><td>07-14 02:37</td><td><a href=https://udn.com/news/story/6809/2582608?from=udn-ch1_breaknews-1-0-news target='_blank'>川普讚法國第一夫人身材超棒 抓著她的手不放</a></td><td>6433</td></tr><tr><td>07-13 19:05</td><td><a href=https://udn.com/news/story/7321/2581819?from=udn-ch1_breaknews-1-0-news target='_blank'>黃國昌自訴洪秀柱開庭 洪秀柱幾乎全程閉眼不看他</a></td><td>6366</td></tr><tr><td>07-13 17:06</td><td><a href=https://udn.com/news/story/7327/2581566?from=udn-ch1_breaknews-1-0-news target='_blank'>西班牙男子徒步環島 盼挽回台灣女友感情</a></td><td>5669</td></tr><tr><td>07-14 06:48</td><td><a href=https://udn.com/news/story/11251/2582630?from=udn-ch1_breaknews-1-0-news target='_blank'>醫師：劉曉波臨終囑妻子劉霞好好活下去</a></td><td>5190</td></tr><tr><td>07-13 21:15</td><td><a href=https://udn.com/news/story/10930/2582079?from=udn-ch1_breaknews-1-0-news target='_blank'>陸戰隊建軍70周年序幕 要胡瓜嚐嚐天堂路滋味</a></td><td>4722</td></tr><tr><td>07-13 20:47</td><td><a href=https://udn.com/news/story/10756/2581987?from=udn-ch1_breaknews-1-0-news target='_blank'>【重磅快評】蔡英文 再怎麼野蠻也別藐視國會霸凌台灣</a></td><td>4551</td></tr><tr><td>07-13 17:30</td><td><a href=https://udn.com/news/story/8864/2581240?from=udn-ch1_breaknews-1-0-news target='_blank'>婚後不能回娘家長住？ 網友轟：結婚不是賣身 </a></td><td>4394</td></tr><tr><td>07-13 17:52</td><td><a href=https://udn.com/news/story/7320/2581674?from=udn-ch1_breaknews-1-0-news target='_blank'>台中后里泳池發生溺水事件 國小男童昏迷搶救中</a></td><td>4198</td></tr><tr><td>07-13 22:06</td><td><a href=https://udn.com/news/story/11251/2582152?from=udn-ch1_breaknews-1-0-news target='_blank'>就是要嫁國家的敵人 劉霞劉曉波的愛情</a></td><td>4123</td></tr><tr><td>07-14 02:11</td><td><a href=https://udn.com/news/story/6809/2582605?from=udn-ch1_breaknews-1-0-news target='_blank'>川普馬克宏談習近平 川普對習讚不絕口</a></td><td>4051</td></tr><tr><td>07-14 08:00</td><td><a href=https://udn.com/news/story/6656/2582333?from=udn-ch1_breaknews-1-0-news target='_blank'>立委超愛甩耳光！他打女人 她常上榜 他一巴掌招來近萬人</a></td><td>4043</td></tr><tr><td>07-13 18:47</td><td><a href=https://udn.com/news/story/7317/2581800?from=udn-ch1_breaknews-1-0-news target='_blank'>桌球教練對5名小學女生伸狼爪 輕判5年檢要上訴</a></td><td>4025</td></tr><tr><td>07-13 20:12</td><td><a href=https://udn.com/news/story/7321/2581924?from=udn-ch1_breaknews-1-0-news target='_blank'>真是晴天霹靂 妻簡訊「肚裡孩子不是你的」</a></td><td>3822</td></tr><tr><td>07-13 18:38</td><td><a href=https://udn.com/news/story/6809/2581767?from=udn-ch1_breaknews-1-0-news target='_blank'>世界10大最佳島嶼 菲巴拉旺島蟬聯榜首</a></td><td>3786</td></tr><tr><td>07-13 19:31</td><td><a href=https://udn.com/news/story/7320/2581849?from=udn-ch1_breaknews-1-0-news target='_blank'>遊覽車司機與超正車掌小姐學CPR 教官：好害羞</a></td><td>3751</td></tr><tr><td>07-14 07:03</td><td><a href=https://udn.com/news/story/6656/2582638?from=udn-ch1_breaknews-1-0-news target='_blank'>美國警察背對方式抗議 葉毓蘭：台灣當權者該引以為戒</a></td><td>3641</td></tr><tr><td>07-13 18:45</td><td><a href=https://udn.com/news/story/7001/2581797?from=udn-ch1_breaknews-1-0-news target='_blank'>中職／林益全再次單局兩出局 又請隊友喝咖啡了</a></td><td>3627</td></tr><tr><td>07-13 22:05</td><td><a href=https://udn.com/news/story/11289/2582194?from=udn-ch1_breaknews-1-0-news target='_blank'>【重磅快評】蔣介石消音 卡提斯教不會蔡英文的事</a></td><td>3611</td></tr><tr><td>07-13 17:24</td><td><a href=https://udn.com/news/story/7315/2581604?from=udn-ch1_breaknews-1-0-news target='_blank'>可供30萬人吸食的大麻花 在台南安平港查到了</a></td><td>3562</td></tr><tr><td>07-14 01:13</td><td><a href=https://udn.com/news/story/10756/2582592?from=udn-ch1_breaknews-1-0-news target='_blank'>備戰前瞻再架拒馬 國民黨：蔡政府拆拆搭搭怕什麼</a></td><td>3529</td></tr><tr><td>07-13 21:14</td><td><a href=https://udn.com/news/story/7320/2582076?from=udn-ch1_breaknews-1-0-news target='_blank'>7歲男童陪阿嬤倒垃圾 慘死資源車輪下</a></td><td>3230</td></tr><tr><td>07-14 07:00</td><td><a href=https://udn.com/news/story/6999/2582132?from=udn-ch1_breaknews-1-0-news target='_blank'>最窮釀酒人扳倒富家小熊 靠神奇哈佛畢業生</a></td><td>3210</td></tr><tr><td>07-14 09:53</td><td><a href=https://udn.com/news/story/8864/2582680?from=udn-ch1_breaknews-1-0-news target='_blank'>帶槍買便當被質疑 新北警神回：不如擔心你的雞腿</a></td><td>3184</td></tr><tr><td>07-13 20:30</td><td><a href=https://udn.com/news/story/6656/2581938?from=udn-ch1_breaknews-1-0-news target='_blank'>前女F4團員劉樂妍勸念淡江不如去大陸 槓上淡江師生</a></td><td>3175</td></tr><tr><td>07-14 08:07</td><td><a href=https://udn.com/news/story/7240/2582651?from=udn-ch1_breaknews-1-0-news target='_blank'>謝金河：郭董在香港資本市場開疆闢土？</a></td><td>3156</td></tr><tr><td>07-13 21:59</td><td><a href=https://udn.com/news/story/11251/2582149?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波病逝 學者：恐再引爆政改呼聲</a></td><td>3093</td></tr><tr><td>07-13 22:46</td><td><a href=https://udn.com/news/story/11251/2582318?from=udn-ch1_breaknews-1-0-news target='_blank'>噤聲逾24小時 醫院公布劉曉波死因</a></td><td>3075</td></tr><tr><td>07-13 22:55</td><td><a href=https://udn.com/news/story/7266/2582339?from=udn-ch1_breaknews-1-0-news target='_blank'>oBike交通亂象 侯友宜：不要挑戰新北執法決心</a></td><td>2962</td></tr><tr><td>07-13 22:55</td><td><a href=https://udn.com/news/story/7266/2582339?from=udn-ch1_breaknews-1-0-news target='_blank'>oBike交通亂象 侯友宜：不要挑戰新北執法決心</a></td><td>2962</td></tr><tr><td>07-14 00:06</td><td><a href=https://udn.com/news/story/11251/2582577?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波逝世 美國務卿：讓劉霞離開中國</a></td><td>2927</td></tr><tr><td>07-13 17:44</td><td><a href=https://udn.com/news/story/6812/2581649?from=udn-ch1_breaknews-1-0-news target='_blank'>找到了！科學家宣稱已解開流感病毒密碼</a></td><td>2892</td></tr><tr><td>07-13 20:19</td><td><a href=https://udn.com/news/story/7328/2581926?from=udn-ch1_breaknews-1-0-news target='_blank'>日本牛丼連鎖店將進駐基隆東岸商場 但想吃要再等等</a></td><td>2859</td></tr><tr><td>07-13 18:36</td><td><a href=https://udn.com/news/story/7266/2581777?from=udn-ch1_breaknews-1-0-news target='_blank'>新北oBike拖吊近3千輛 交通局今起禁業者投車</a></td><td>2842</td></tr><tr><td>07-14 08:42</td><td><a href=https://udn.com/news/story/11251/2582675?from=udn-ch1_breaknews-1-0-news target='_blank'>劉霞失聯 傳劉曉波遺體將立即火化海葬</a></td><td>2801</td></tr><tr><td>07-13 22:52</td><td><a href=https://udn.com/news/story/7320/2582334?from=udn-ch1_breaknews-1-0-news target='_blank'>生死一瞬間！男子開冷氣睡車上 竟睡到火燒車</a></td><td>2697</td></tr><tr><td>07-13 19:39</td><td><a href=https://udn.com/news/story/7326/2581861?from=udn-ch1_breaknews-1-0-news target='_blank'>雲林海邊有一處 美麗又設備完善的露營祕境</a></td><td>2667</td></tr><tr><td>07-13 20:45</td><td><a href=https://udn.com/news/story/6810/2581959?from=udn-ch1_breaknews-1-0-news target='_blank'>氣候變遷 熱浪恐讓飛機太熱飛不了</a></td><td>2589</td></tr><tr><td>07-13 20:11</td><td><a href=https://udn.com/news/story/11017/2581918?from=udn-ch1_breaknews-1-0-news target='_blank'>LINE 7.7.0異常自救 這7個步驟先照做</a></td><td>2520</td></tr><tr><td>07-14 06:28</td><td><a href=https://udn.com/news/story/6656/2582629?from=udn-ch1_breaknews-1-0-news target='_blank'>柯P臉書悼劉曉波 網友問「還兩岸一家親??」</a></td><td>2493</td></tr><tr><td>07-14 07:00</td><td><a href=https://udn.com/news/story/7001/2582449?from=udn-ch1_breaknews-1-0-news target='_blank'>中職／富邦補強功效有限 調度仍是大問題</a></td><td>2449</td></tr><tr><td>07-13 17:38</td><td><a href=https://udn.com/news/story/10756/2581627?from=udn-ch1_breaknews-1-0-news target='_blank'>謝龍介批：十年前的老案列入前瞻 根本是新瓶舊酒</a></td><td>2446</td></tr><tr><td>07-13 23:20</td><td><a href=https://udn.com/news/story/6813/2582421?from=udn-ch1_breaknews-1-0-news target='_blank'>捲入通俄門風暴 川普長子大起底</a></td><td>2432</td></tr><tr><td>07-13 22:05</td><td><a href=https://udn.com/news/story/11091/2582194?from=udn-ch1_breaknews-1-0-news target='_blank'>【重磅快評】蔣介石消音 卡提斯教不會蔡英文的事</a></td><td>2396</td></tr><tr><td>07-14 05:41</td><td><a href=https://udn.com/news/story/6656/2582625?from=udn-ch1_breaknews-1-0-news target='_blank'>AIT主席莫健：美不會為短利扭轉長期對台政策</a></td><td>2373</td></tr><tr><td>07-13 18:47</td><td><a href=https://udn.com/news/story/7266/2580577?from=udn-ch1_breaknews-1-0-news target='_blank'>各走各的路！單車搶駛人行道 北市將祭罰</a></td><td>2323</td></tr><tr><td>07-13 17:29</td><td><a href=https://udn.com/news/story/7331/2581576?from=udn-ch1_breaknews-1-0-news target='_blank'>開羅宣言 陸：與中英聯合聲明性質不同</a></td><td>2278</td></tr><tr><td>07-13 18:20</td><td><a href=https://udn.com/news/story/7266/2581737?from=udn-ch1_breaknews-1-0-news target='_blank'>長庚風波未歇 李石增明將親上火線說明</a></td><td>2146</td></tr><tr><td>07-14 09:57</td><td><a href=https://udn.com/news/story/7314/2582765?from=udn-ch1_breaknews-1-0-news target='_blank'>長庚急診風波 李石增：董事長王瑞慧為求自保犧牲我</a></td><td>2120</td></tr><tr><td>07-13 22:51</td><td><a href=https://udn.com/news/story/7001/2582330?from=udn-ch1_breaknews-1-0-news target='_blank'>中職／鄭凱文終於勝投 但不習慣搭配林明杰</a></td><td>2032</td></tr><tr><td>07-13 17:37</td><td><a href=https://udn.com/news/story/7239/2581626?from=udn-ch1_breaknews-1-0-news target='_blank'>台灣人喜歡線上借錢 2年半借近千億元</a></td><td>1896</td></tr><tr><td>07-13 23:41</td><td><a href=https://udn.com/news/story/8319/2582525?from=udn-ch1_breaknews-1-0-news target='_blank'>溫網／9度闖決賽 大威：先致電小威求意見</a></td><td>1887</td></tr><tr><td>07-14 01:10</td><td><a href=https://udn.com/news/story/7321/2582589?from=udn-ch1_breaknews-1-0-news target='_blank'>「寧縱放、不冤枉」 詐欺女被控逆轉無罪 檢傻眼！</a></td><td>1816</td></tr><tr><td>07-13 19:40</td><td><a href=https://udn.com/news/story/7001/2581862?from=udn-ch1_breaknews-1-0-news target='_blank'>中職／打擊榜相爭 陳傑憲、王柏融互虧「是要敲幾支」</a></td><td>1801</td></tr><tr><td>07-13 16:56</td><td><a href=https://udn.com/news/story/7320/2581526?from=udn-ch1_breaknews-1-0-news target='_blank'>新北搜救犬退役卸重擔 對外開放認養尋找好歸宿</a></td><td>1753</td></tr><tr><td>07-13 19:21</td><td><a href=https://udn.com/news/story/7315/2581835?from=udn-ch1_breaknews-1-0-news target='_blank'>4台人在印尼走私1噸安毒 1人被警擊斃</a></td><td>1751</td></tr><tr><td>07-14 00:08</td><td><a href=https://udn.com/news/story/7331/2582578?from=udn-ch1_breaknews-1-0-news target='_blank'>一度蕭條的南韓免稅店最近逐漸恢復昔日盛況</a></td><td>1727</td></tr><tr><td>07-13 23:24</td><td><a href=https://udn.com/news/story/6656/2582446?from=udn-ch1_breaknews-1-0-news target='_blank'>林正義：台灣的國防預算會增加</a></td><td>1721</td></tr><tr><td>07-13 22:58</td><td><a href=https://udn.com/news/story/10756/2582347?from=udn-ch1_breaknews-1-0-news target='_blank'>交部嚴訂「遊戲規則」 賀陳旦：前瞻是無悔的建設</a></td><td>1714</td></tr><tr><td>07-13 21:07</td><td><a href=https://udn.com/news/story/7086/2581958?from=udn-ch1_breaknews-1-0-news target='_blank'>微軟7月安全性更新 這項漏洞最好先修補</a></td><td>1707</td></tr><tr><td>07-13 17:26</td><td><a href=https://udn.com/news/story/7326/2581609?from=udn-ch1_breaknews-1-0-news target='_blank'>搶救嘉義縣定古蹟 朴子市配天宮靈樹四季蘭</a></td><td>1686</td></tr><tr><td>07-13 18:53</td><td><a href=https://udn.com/news/story/7315/2581802?from=udn-ch1_breaknews-1-0-news target='_blank'>翁砍死18年老友 死者兒拿遺照：你敢跟我爸道歉嗎</a></td><td>1613</td></tr><tr><td>07-13 22:16</td><td><a href=https://udn.com/news/story/11251/2582217?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波病逝 王丹：一盞明燈熄滅了</a></td><td>1584</td></tr><tr><td>07-13 21:04</td><td><a href=https://udn.com/news/story/7315/2582051?from=udn-ch1_breaknews-1-0-news target='_blank'>人為財死！ 一年內已3台人印尼運毒被警擊斃</a></td><td>1557</td></tr><tr><td>07-14 03:28</td><td><a href=https://udn.com/news/story/6813/2582611?from=udn-ch1_breaknews-1-0-news target='_blank'>「通俄門」每日一字 白宮顧問康威拿字卡教英文</a></td><td>1529</td></tr><tr><td>07-13 19:27</td><td><a href=https://udn.com/news/story/7320/2581844?from=udn-ch1_breaknews-1-0-news target='_blank'>「我要找女兒...」獨居老婦人的背影讓人心酸</a></td><td>1483</td></tr><tr><td>07-13 23:16</td><td><a href=https://udn.com/news/story/11251/2582398?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波病逝 龍應台好痛</a></td><td>1459</td></tr><tr><td>07-13 23:13</td><td><a href=https://udn.com/news/story/11251/2582375?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波逝世 陸委會籲陸還劉曉波家屬自由</a></td><td>1440</td></tr><tr><td>07-13 19:11</td><td><a href=https://udn.com/news/story/7321/2581827?from=udn-ch1_breaknews-1-0-news target='_blank'>基隆首例！丟肉誘拍老鷹遭函送 動保所祭出鐵腕</a></td><td>1430</td></tr><tr><td>07-13 17:59</td><td><a href=https://udn.com/news/story/6929/2581688?from=udn-ch1_breaknews-1-0-news target='_blank'>運動經濟夯 北一女學生也來讀科大休閒系</a></td><td>1415</td></tr><tr><td>07-13 18:01</td><td><a href=https://udn.com/news/story/7326/2581696?from=udn-ch1_breaknews-1-0-news target='_blank'>東石高中椰林大道遭朴子市公所砍除 網嘆老樹悲歌</a></td><td>1413</td></tr><tr><td>07-14 04:30</td><td><a href=https://udn.com/news/story/6809/2582612?from=udn-ch1_breaknews-1-0-news target='_blank'>美法總統爭捧習近平 避談劉曉波之死</a></td><td>1390</td></tr><tr><td>07-14 06:49</td><td><a href=https://udn.com/news/story/11251/2582628?from=udn-ch1_breaknews-1-0-news target='_blank'>西方領袖悼劉曉波 北京怒批干涉內政</a></td><td>1366</td></tr><tr><td>07-13 22:09</td><td><a href=https://udn.com/news/story/7001/2582198?from=udn-ch1_breaknews-1-0-news target='_blank'>中職／又是統一獅 三度截斷猿隊8連勝</a></td><td>1365</td></tr><tr><td>07-14 04:03</td><td><a href=https://udn.com/news/story/11251/2582614?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波病逝 美駐中大使：中國失去一位高度原則典範</a></td><td>1313</td></tr><tr><td>07-13 19:43</td><td><a href=https://udn.com/news/story/6898/2581867?from=udn-ch1_breaknews-1-0-news target='_blank'>學生缺額太多...私校、五專搶學生 家齊首辦續招</a></td><td>1309</td></tr><tr><td>07-13 21:09</td><td><a href=https://udn.com/news/story/6898/2582059?from=udn-ch1_breaknews-1-0-news target='_blank'>台南市家齊高中5A新生大增 老師高興到睡不著</a></td><td>1303</td></tr><tr><td>07-14 01:41</td><td><a href=https://udn.com/news/story/11251/2582502?from=udn-ch1_breaknews-1-0-news target='_blank'>諾貝爾和平獎得主 劉曉波病逝</a></td><td>1238</td></tr><tr><td>07-13 23:24</td><td><a href=https://udn.com/news/story/6656/2582448?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波辭世 蔡總統臉書表示哀慟</a></td><td>1232</td></tr><tr><td>07-14 08:09</td><td><a href=https://udn.com/news/story/6898/2582654?from=udn-ch1_breaknews-1-0-news target='_blank'>北市高中職報到率 北一女百分百 建中少3人</a></td><td>1225</td></tr><tr><td>07-13 19:47</td><td><a href=https://udn.com/news/story/6929/2581882?from=udn-ch1_breaknews-1-0-news target='_blank'>有片／哇！哆啦A夢飛上天 他花10年實現兒時夢想</a></td><td>1215</td></tr><tr><td>07-13 21:51</td><td><a href=https://udn.com/news/story/6929/2582141?from=udn-ch1_breaknews-1-0-news target='_blank'>他棄雄中拿中山工商百萬獎學金 將用來投資理財</a></td><td>1210</td></tr><tr><td>07-14 09:38</td><td><a href=https://udn.com/news/story/10756/2582742?from=udn-ch1_breaknews-1-0-news target='_blank'>砸椅又潑水 為前瞻朝野立委再次大打出手</a></td><td>1200</td></tr><tr><td>07-14 09:32</td><td><a href=https://udn.com/news/story/11251/2582711?from=udn-ch1_breaknews-1-0-news target='_blank'>劉曉波六四後央視認罪真相：他們迫父親跪求我</a></td><td>1148</td></tr><tr><td>07-14 07:18</td><td><a href=https://udn.com/news/story/7266/2582642?from=udn-ch1_breaknews-1-0-news target='_blank'>吳德榮：周末將是最燠熱的兩天 台北恐飆破37度高溫</a></td><td>1147</td></tr><tr><td>07-13 19:07</td><td><a href=https://udn.com/news/story/7320/2581823?from=udn-ch1_breaknews-1-0-news target='_blank'>七旬婦遭蜘蛛咬傷 沒成「蜘蛛人」還險瞎眼</a></td><td>1139</td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+
+<!--3 -->
+<div id="TechOrange_AI" class="tabcontent">
+<h2>3.科技橘報(人工智慧)</h2>
+
+<table width=1200 border=10>
+<tr><td>日期</td><td>標題</td><td>分享數</td></tr>
+<tr><td>2017/07/13</td><td><a href=https://buzzorange.com/techorange/2017/07/13/google-purchase-halli-labs/ target='_blank'>【朕說不給，你不能要】Google 重金收購印度機器學習公司，就是要搶光所有數據人才</a></td><td>19 分享</td></tr><tr><td>2017/07/13</td><td><a href=https://buzzorange.com/techorange/2017/07/13/coca-cola-app/ target='_blank'>自動販賣機也能打天下？可口可樂結合人工智慧 app，打造新奇體驗拚銷售</a></td><td>79 分享</td></tr><tr><td>2017/07/12</td><td><a href=https://buzzorange.com/techorange/2017/07/12/taxi-go-online/ target='_blank'>台版 Uber 崛起！新創 TaxiGo 獲千萬投資，用 FB、Line 輕鬆叫小黃</a></td><td>487 分享</td></tr><tr><td>2017/07/12</td><td><a href=https://buzzorange.com/techorange/2017/07/12/alihealth-ai/ target='_blank'>【來搶醫生工作了！】阿里健康 AI 助手可做臨床診斷，10 年內承擔醫生一半工作</a></td><td>118 分享</td></tr><tr><td>2017/07/12</td><td><a href=https://buzzorange.com/techorange/2017/07/12/microsoft-cloud-service/ target='_blank'>「程式開發者才是老大！」微軟又裁員又轉型雲端，只為解決開發者痛點</a></td><td>9 分享</td></tr><tr><td>2017/07/11</td><td><a href=https://buzzorange.com/techorange/2017/07/11/taocafe/ target='_blank'>馬雲也開了一家無人超市：「我們的方式比 Amazon 更省錢啦，他們茶葉蛋要賣三千才會回本！」</a></td><td>950 分享</td></tr><tr><td>2017/07/11</td><td><a href=https://buzzorange.com/techorange/2017/07/11/ai-god-or-useless/ target='_blank'>「你只能二選一，成為上帝還是無用階層?」《人類大歷史》作者談 21 世紀人工智慧最大危機</a></td><td>71 分享</td></tr><tr><td>2017/07/11</td><td><a href=https://buzzorange.com/techorange/2017/07/11/badoo-ai-dating/ target='_blank'>想找新垣結衣約會？上傳照片，AI 就幫從 6000 萬人中找出眼睛、笑容通通最像的來！</a></td><td>87 分享</td></tr><tr><td>2017/07/10</td><td><a href=https://buzzorange.com/techorange/2017/07/10/google-invest-in-ai-reporters-gone/ target='_blank'>都給 AI 做就好了啊！Google 投資人工智慧新項目，記者飯碗真的不保？</a></td><td>82 分享</td></tr><tr><td>2017/07/10</td><td><a href=https://buzzorange.com/techorange/2017/07/10/unmanned-bus/ target='_blank'>與一般民眾一起參加的無人公車試乘，我看見了台灣的超高科技接受度</a></td><td>621 分享</td></tr><tr><td>2017/07/10</td><td><a href=https://buzzorange.com/techorange/2017/07/10/al-2015newresearch/ target='_blank'>未來 45 年內，哪些產業將消失？350 位人工智慧專家點名暢銷作家、外科醫生</a></td><td>6 分享</td></tr><tr><td>2017/07/07</td><td><a href=https://buzzorange.com/techorange/2017/07/07/cainiao-ace/ target='_blank'>【CONNECT TO CHANGE】阿里巴巴「菜鳥網路」新物流車 CONNECT 人工智慧，每日節流五千萬台幣</a></td><td>21 分享</td></tr><tr><td>2017/07/07</td><td><a href=https://buzzorange.com/techorange/2017/07/07/deepmind-ai-google-canada/ target='_blank'>美國掰！比美國強又開放，DeepMind 海外 AI 實驗室選加拿大</a></td><td>84 分享</td></tr><tr><td>2017/07/06</td><td><a href=https://buzzorange.com/techorange/2017/07/06/data-talent/ target='_blank'>Google 想買下全世界數據人才，為了求才你可能得付出多少代價？</a></td><td>297 分享</td></tr><tr><td>2017/07/06</td><td><a href=https://buzzorange.com/techorange/2017/07/06/mit-google-ai/ target='_blank'>會讀、聽和識別的 AI 還是不夠聰明！Google 和 MIT 要統合這些能力，讓 AI 更像人</a></td><td>84 分享</td></tr><tr><td>2017/07/05</td><td><a href=https://buzzorange.com/techorange/2017/07/05/baidu-ai/ target='_blank'>百度宣布 All-in 人工智慧：「為了偉大中國的復興，我們必須全力發展 AI」</a></td><td>181 分享</td></tr><tr><td>2017/07/05</td><td><a href=https://buzzorange.com/techorange/2017/07/05/stitch-fix-ai-data/ target='_blank'>不打折的服飾業如何顛覆傳統零售？數據分析和 AI 當利器，Stitch Fix 用個性化服務殺出血路</a></td><td>62 分享</td></tr><tr><td>2017/07/04</td><td><a href=https://buzzorange.com/techorange/2017/07/04/robot-police/ target='_blank'>「機器戰警」即將在現實世界出現！但他現在還是台車……</a></td><td>24 分享</td></tr><tr><td>2017/07/03</td><td><a href=https://buzzorange.com/techorange/2017/07/03/ai-in-traffic/ target='_blank'>【CONNECT TO CHANGE】NVIDIA 破解一路綠燈的交通秘訣，油門催到底才是未來交通模式</a></td><td>34 分享</td></tr><tr><td>2017/06/30</td><td><a href=https://buzzorange.com/techorange/2017/06/30/ai-twitter-u-should-know/ target='_blank'>要追，就追最好的！全球 AI 社群最具影響力的意見領袖、品牌、知識社群總整理</a></td><td>374 分享</td></tr><tr><td>2017/06/29</td><td><a href=https://buzzorange.com/techorange/2017/06/29/ibm-watson-sillicon-ceo/ target='_blank'>【AI 殲滅產業系列】IBM 超級電腦當 HR，評 Elon Musk 小心謹慎第一名</a></td><td>81 分享</td></tr><tr><td>2017/06/28</td><td><a href=https://buzzorange.com/techorange/2017/06/28/sketch-rnn-google-ai/ target='_blank'>前兩代 Google 畫圖遊戲升級版！隨便鬼畫符一坨不明物體，給 Google 猜還直接幫你畫完</a></td><td>104 分享</td></tr><tr><td>2017/06/27</td><td><a href=https://buzzorange.com/techorange/2017/06/27/ai-makes-gdp-high/ target='_blank'>台灣 GDP 還在保 2？人工智慧未來將帶給中國 GDP 26%、全球 14% 的巨幅成長</a></td><td>476 分享</td></tr><tr><td>2017/06/20</td><td><a href=https://buzzorange.com/techorange/2017/06/20/pac-man/ target='_blank'>完爆人類！微軟 AI 打破《Pac-Man》遊戲紀錄，創下歷史最高 999990 分</a></td><td>147 分享</td></tr><tr><td>2017/06/19</td><td><a href=https://buzzorange.com/techorange/2017/06/19/tw-could-do-ai/ target='_blank'>如果其他國家是獅子，台灣應當 AI 產業中多得數不清的螞蟻——台科大教授盧希鵬談人工智慧發展</a></td><td>1.2 K 分享</td></tr><tr><td>2017/06/15</td><td><a href=https://buzzorange.com/techorange/2017/06/15/fei-fei-lee-cmu-and-stanford/ target='_blank'>【Google 李飛飛再發威】攜手史丹佛、CMU 團隊，機器學習的動作識別和預測能力大突破！</a></td><td>279 分享</td></tr><tr><td>2017/06/15</td><td><a href=https://buzzorange.com/techorange/2017/06/15/facebook-fair/ target='_blank'>會「吵架」的機器人比較聰明：Facebook 讓 AI 不只會服從命令，還會討價還價</a></td><td>99 分享</td></tr><tr><td>2017/06/14</td><td><a href=https://buzzorange.com/techorange/2017/06/14/tim-cook-admits-apple-in-ai/ target='_blank'>庫克首度承認蘋果研發自駕是「史上最難」AI 項目，馬斯克聽到不要在心裡偷笑啦</a></td><td>83 分享</td></tr><tr><td>2017/06/12</td><td><a href=https://buzzorange.com/techorange/2017/06/12/ai-know-you-when-to-die/ target='_blank'>看完一堆病歷與 X 光後，AI 學會了一件挺殘忍的事情：預言死亡</a></td><td>863 分享</td></tr><tr><td>2017/06/08</td><td><a href=https://buzzorange.com/techorange/2017/06/08/aidan-ai-maths/ target='_blank'>中國高考數學難，人類考生拿狀元、人工智慧輸一分只能拿榜眼</a></td><td>145 分享</td></tr><tr><td>2017/06/07</td><td><a href=https://buzzorange.com/techorange/2017/06/07/about-voice-assistant/ target='_blank'>別小看你手機裡的語音助手，他其實比打爆柯潔的 AlphaGo 還要艱深複雜</a></td><td>331 分享</td></tr><tr><td>2017/06/07</td><td><a href=https://buzzorange.com/techorange/2017/06/07/computex-2017-innovex/ target='_blank'>COMPUTEX 2017 焦點：拼人工智慧與物聯網，InnoVEX 亞洲成最大新創展會</a></td><td>46 分享</td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+
+<!--4 -->
+<div id="google_search_Robo_Advisor" class="tabcontent">
+<h2>4.google搜尋-理財機器人</h2>
+
+<table width=800 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017-07-14</td><td><a href=https://www.inside.com.tw/2017/07/13/taiwan-ai target='_blank'>【有恆為AI 成功之本】台灣的AI 不只需要50 億，更需要法治與大環境的配合</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/story/7239/2581801 target='_blank'>大拇哥投顧開業用機器人幫投資人理財</a></td></tr><tr><td>2017-07-13</td><td><a href=https://money.udn.com/money/story/5618/2579955 target='_blank'>7月13日今日我最亮</a></td></tr><tr><td>2017-07-13</td><td><a href=https://money.udn.com/money/story/5618/2580001 target='_blank'>機器人概念年報酬率20%</a></td></tr><tr><td>2017-07-12</td><td><a href=http://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000506251_E821E1SA6DGNL102CYRMJ target='_blank'>精誠資訊推出機器人理財顧問解決方案</a></td></tr><tr><td>2017-07-12</td><td><a href=https://www.moneydj.com/KMDJ/News/NewsViewer.aspx?a=1dc9afc6-9b8a-43f3-8c10-efa61f95b540 target='_blank'>IDC：全球機器人支出將猛升、2021年達2307億美元</a></td></tr><tr><td>2017-07-12</td><td><a href=https://www.moneydj.com/KMDJ/News/NewsViewer.aspx?a=f37adf8d-702a-4cfe-9b15-bc716dd21f55 target='_blank'>導入FinTech技術，元大證力推視訊機器人開戶</a></td></tr><tr><td>2017-07-12</td><td><a href=https://money.udn.com/money/story/5617/2577804 target='_blank'>機器人理財天蠍座愛用</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.chinatimes.com/newspapers/20170711000022-260202 target='_blank'>數位金融夯－王道銀數位帳戶3個月從零到3萬戶</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.ithome.com.tw/news/115484 target='_blank'>王道銀行機器人理財2.0出爐專攻小資，3個月快速改版關鍵大揭露</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.ettoday.net/news/20170711/964041.htm?t=%E5%B9%B4%E8%BC%95%E4%BA%BA%E6%84%9B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%90%86%E8%B2%A1%E3%80%80%E9%80%99%E4%B8%89%E6%98%9F%E5%BA%A7%E6%8E%A5%E5%8F%97%E5%BA%A6%E6%9C%80%E9%AB%98%EF%BC%81 target='_blank'>年輕人愛機器人理財這三星座接受度最高！</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.chinatimes.com/newspapers/20170711000020-260202 target='_blank'>數位金融夯－中信銀智能理財上線1月千人申辦</a></td></tr><tr><td>2017-07-11</td><td><a href=https://udn.com/news/plus/10187/2576502 target='_blank'>最愛刷卡消費星座天蠍座排第1</a></td></tr><tr><td>2017-07-10</td><td><a href=https://money.udn.com/money/story/5629/2573648 target='_blank'>財管掀戰火機器人單挑理專</a></td></tr><tr><td>2017-07-07</td><td><a href=https://www.moneydj.com/KMDJ/News/NewsViewer.aspx?a=c64c079d-77cd-4811-b302-d4269617d61e target='_blank'>機器人理專夯、管理資產料飆升！惟未經熊市考驗惹議</a></td></tr><tr><td>2017-07-07</td><td><a href=https://money.udn.com/money/story/5618/2568598 target='_blank'>機器人理財條款業者爭取再放寬</a></td></tr><tr><td>2017-07-04</td><td><a href=http://www.chinatimes.com/newspapers/20170704000260-260208 target='_blank'>機器人理財女性客戶躍主力</a></td></tr><tr><td>2017-07-01</td><td><a href=https://udn.com/news/story/7239/2558383 target='_blank'>中國信託全盤靠人工智慧自主投資的機器人理財還在實驗</a></td></tr><tr><td>2017-07-01</td><td><a href=https://udn.com/news/story/7239/2558380 target='_blank'>台灣自動化理財法規出爐現階段不叫機器人理財</a></td></tr><tr><td>2017-07-01</td><td><a href=https://money.udn.com/money/story/10875/2556702 target='_blank'>美國 大摩升級服務推理財機器人</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+
+<!--5 -->
+<div id="google_search_blockchain" class="tabcontent">
+<h2>5.google搜尋-區塊鏈</h2>
+
+<table width=1000 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017-07-14</td><td><a href=https://www.bnext.com.tw/article/45355/hyperledger-fabric-releases-version-1-0-of-open-source-distributed-ledger target='_blank'>第一個開發成熟的商用區塊鏈開源框架Hyperledger Fabric 1.0上線 ...</a></td></tr><tr><td>2017-07-14</td><td><a href=http://www.eettaiwan.com/news/article/20170713NT03-Sensors-Blockchains-Meet-Tomatoes-partII target='_blank'>物聯網掀起食物革命(下)</a></td></tr><tr><td>2017-07-14</td><td><a href=http://www.wealth.com.tw/article_in.aspx?nid=11401 target='_blank'>2017財訊FinTech金融科技論壇</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/story/6811/2582392 target='_blank'>瑞士開例准銀行管理比特幣</a></td></tr><tr><td>2017-07-12</td><td><a href=http://big5.xinhuanet.com/gate/big5/www.sd.xinhuanet.com/news/2017-07/12/c_1121308776.htm target='_blank'>青島將建設區塊鏈?業四大平臺</a></td></tr><tr><td>2017-07-12</td><td><a href=https://qooah.com/2017/07/12/connet/ target='_blank'>智能世代連合約都智能化了</a></td></tr><tr><td>2017-07-12</td><td><a href=http://www.eettaiwan.com/news/article/20170712NT03-Sensors-Blockchains-Meet-Tomatoes-partI target='_blank'>物聯網掀起食物革命(上)</a></td></tr><tr><td>2017-07-12</td><td><a href=http://www.digitimes.com.tw/iot/article.asp?cat=158&id=0000506677_23079pd16vzbtq8zsjllo target='_blank'>IBM推區塊鏈物流解決方案提升效率和透明度</a></td></tr><tr><td>2017-07-11</td><td><a href=https://finance.technews.tw/2017/07/11/bitcoin-civil-war/ target='_blank'>比特幣「內戰」風雨欲來？對決日將至，市場憂價格瀉</a></td></tr><tr><td>2017-07-10</td><td><a href=http://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000506622_TL55U09Y3FH5C81EV60CA target='_blank'>韓電計劃利用區塊鏈技術打造電動車充電站平台</a></td></tr><tr><td>2017-07-08</td><td><a href=https://money.udn.com/money/story/10869/2570565 target='_blank'>區塊鏈錢包串起各家帳簿</a></td></tr><tr><td>2017-07-07</td><td><a href=http://www.ithome.com.tw/news/115430 target='_blank'>Fintech雙周報第25期：中國央行發布金融科技五年計畫，四大銀行也啟動各種科技創新合作案</a></td></tr><tr><td>2017-07-07</td><td><a href=http://technews.tw/2017/07/07/blockchain-used-in-government/ target='_blank'>增加政府信任度，前蘇聯國家借重區塊鏈技術</a></td></tr><tr><td>2017-07-06</td><td><a href=http://news.cnyes.com/news/id/3858307 target='_blank'>比搶銀行還快！區塊鏈新創ICO上不封頂4天募集2億美元</a></td></tr><tr><td>2017-07-06</td><td><a href=https://www.inside.com.tw/2017/07/06/medical-hackathon target='_blank'>不只比特幣！從黑客松看區塊鏈用在醫療有什麼新火花</a></td></tr><tr><td>2017-07-06</td><td><a href=https://www.xcnnews.com/kj/105138.html target='_blank'>區塊鏈技術的滲透，是否能助推傳統教育轉型？</a></td></tr><tr><td>2017-07-05</td><td><a href=https://www.bnext.com.tw/article/45223/amis-blockchain-jp-morgan target='_blank'>台灣區塊鏈新創AMIS，攻進摩根大通生態系</a></td></tr><tr><td>2017-07-05</td><td><a href=http://www.ithome.com.tw/news/115341 target='_blank'>以太坊區塊鏈技術大突破，臺灣團隊AMIS創新區塊鏈共識演算，每秒交易量上看1200筆</a></td></tr><tr><td>2017-07-04</td><td><a href=http://www.ithome.com.tw/news/115289 target='_blank'>美國企業用區塊鏈記錄股權將合法！美國德瓦拉州最快8月開放</a></td></tr><tr><td>2017-07-03</td><td><a href=https://www.nownews.com/news/20170703/2584292 target='_blank'>富比士專欄文章：2017數博會背後的區塊鏈趨勢</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+
+<!--6 -->
+<div id="google_search_bigdata" class="tabcontent">
+<h2>6.google搜尋-大數據</h2>
+
+<table width=900 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017-07-14</td><td><a href=http://www.appledaily.com.tw/realtimenews/article/new/20170713/1160641/ target='_blank'>廣告再進化OneAD打造品牌大數據AI雲端</a></td></tr><tr><td>2017-07-14</td><td><a href=http://times.hinet.net/news/20293941 target='_blank'>農業智慧設施環境監控專家系統大數據成栽培不可或缺的手段</a></td></tr><tr><td>2017-07-14</td><td><a href=https://www.ctimes.com.tw/DispNews-tw.asp?O=HK17DAPVKK4SAA00N5 target='_blank'>資料工程師將成最搶手職缺Cloudera引進大數據分析培訓計畫</a></td></tr><tr><td>2017-07-14</td><td><a href=http://www.chinesetoday.com/big/article/1196662 target='_blank'>陜西運用大數據完善信用體系破解“執行難”</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/plus/9395/2580960 target='_blank'>軍醫局與東吳大學合作開放大數據資料</a></td></tr><tr><td>2017-07-14</td><td><a href=http://big5.xinhuanet.com/gate/big5/www.gz.xinhuanet.com/2017-07/14/c_1121317534.htm target='_blank'>“雲上貴州”再添12家全球大數據戰略夥伴</a></td></tr><tr><td>2017-07-14</td><td><a href=http://www.storm.mg/lifestyle/297884 target='_blank'>一張大頭貼定勝負！美國最大交友網站大數據分析，這4種照片最受歡迎、男女都適用</a></td></tr><tr><td>2017-07-14</td><td><a href=https://www.nownews.com/news/20170713/2588582 target='_blank'>健康不e樣大數據+健診讓生理年齡分析變簡單</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/story/7324/2581161 target='_blank'>睡前滑一下手機大數據顯示網友愈來愈自主| 桃竹苗| 地方| 聯合新聞網</a></td></tr><tr><td>2017-07-14</td><td><a href=http://www.chinatimes.com/realtimenews/20170713005786-260410 target='_blank'>首家機器人投顧開幕TAROBO可做基金前瞻預估！</a></td></tr><tr><td>2017-07-13</td><td><a href=http://www.chinatimes.com/newspapers/20170713000131-260205 target='_blank'>席勒：大數據看真市場- 中時電子報</a></td></tr><tr><td>2017-07-12</td><td><a href=http://news.tvbs.com.tw/life/745785 target='_blank'>新！大數據掌握行動支付銷量有望增2成</a></td></tr><tr><td>2017-07-12</td><td><a href=https://udn.com/news/plus/10173/2578758 target='_blank'>聯晚之眼／竄改診斷碼扭曲健保大數據</a></td></tr><tr><td>2017-07-12</td><td><a href=https://udn.com/news/story/7241/2579566 target='_blank'>哈佛健診醫學生理年齡系統用大數據把關健康</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.ithome.com.tw/news/115498 target='_blank'>臺灣資料工程協會即將成立，大數據平臺Hadoop之父也來站臺</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.cheers.com.tw/article/article.action?id=5083597 target='_blank'>大數據時代下的３種品牌</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.cna.com.tw/news/ahel/201707110210-1.aspx target='_blank'>中市交通研討會探討大數據智慧管理</a></td></tr><tr><td>2017-07-11</td><td><a href=https://udn.com/news/story/7266/2575433 target='_blank'>健康@news／大數據算病誰是失智候選人</a></td></tr><tr><td>2017-07-10</td><td><a href=http://news.cnyes.com/news/id/3862901 target='_blank'>重新定義資產管理大數據：妙盈科技宣布與Silverhorn達成合作</a></td></tr><tr><td>2017-07-09</td><td><a href=http://news.ltn.com.tw/news/focus/paper/1117275 target='_blank'>孫明德：翻轉低薪搭新南向、物聯網、大數據</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+<!--7 -->
+<div id="CTIMES" class="tabcontent">
+<h2>7.CTIMES 電子產業社群平台<br></h2>
+
+<table width=800 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017.07.13</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/資料科學家/大數據分析/資料工程師/BASE/物聯網/1707131800Z6.shtml target='_blank'>資料工程師將成最搶手職缺 Cloudera引進大數據分析培訓計畫 </a></td></tr><tr><td>2017.07.13</td><td><a href=http://www.ctimes.com.tw/DispEvent/tw/工研院IEK/1707131330LG.shtml target='_blank'>人工智慧x物聯網 引爆數位新機會與新挑戰研討會 </a></td></tr><tr><td>2017.07.13</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/智慧醫療/資通訊/安全監控/太陽能光電/智慧城市/1707131028XX.shtml target='_blank'>桃園市智慧化程度不落五都之後 </a></td></tr><tr><td>2017.07.13</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/馬達製造/物聯網/高聖精密/東元電機/機台設備/1707131006RC.shtml target='_blank'>東元、高聖智慧轉型 </a></td></tr><tr><td>2017.07.12</td><td><a href=http://www.ctimes.com.tw/DispArt-tw.asp?O=HK17C8960PMARASTD3&F=%E5%A4%A7%E6%95%B8%E6%93%9A target='_blank'>萬物聯網時代來臨 </a></td></tr><tr><td>2017.07.11</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/1707111439BW.shtml target='_blank'>漫談多功能嵌入式電子產品–從Android到Raspberry Pi 3 </a></td></tr><tr><td>2017.07.11</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/人工智慧/智慧工廠/富士康/智慧製造/工業4.0/1707111021UD.shtml target='_blank'>製造思維大翻轉 </a></td></tr><tr><td>2017.07.10</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/大數據分析/Cloudera/1707101518OD.shtml target='_blank'>Cloudera發布2017最新大數據分析趨勢 </a></td></tr><tr><td>2017.07.10</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/網格/注塑成型/Moldex3D/模具設計/模流分析/1707100955FB.shtml target='_blank'>全球模流分析技術的應用現況與發展 </a></td></tr><tr><td>2017.07.07</td><td><a href=http://www.ctimes.com.tw/DispArt-tw.asp?O=HK17768OF5MARASTD8&F=%E5%A4%A7%E6%95%B8%E6%93%9A target='_blank'>全球模流分析技術的應用現況與發展 </a></td></tr><tr><td>2017.07.06</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/green-technology/Uwin-Nanotech/1707061949F9.shtml target='_blank'>推動循環經濟 優勝奈米與台灣產官團赴歐參訪 </a></td></tr><tr><td>2017.07.04</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/大數據/福斯/人工智慧/自動駕駛/NVIDIA/1707041802EM.shtml target='_blank'>車廠拚人工智慧 福斯強化深度學習技術 </a></td></tr><tr><td>2017.07.03</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/Siemens/藥技中心/台灣西門子/漢欣工程/LabWare/1707031041ZV.shtml target='_blank'>製藥工業4.0數位化 打造智慧生產效能 </a></td></tr><tr><td>2017.06.28</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/伺服器/Solid-State-Drive/固態硬碟/MemxPro/敏博/170628185132.shtml target='_blank'>敏博推出最新企業與工業記憶體儲存方案 </a></td></tr><tr><td>2017.06.26</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/語音助理/AI/大數據/ICT/影像辨識/1706261742G7.shtml target='_blank'>市場規模居下風 台灣發展AI應融合應用服務 </a></td></tr><tr><td>2017.06.22</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/關燈工廠/智慧製造/工業4.0/機器學習/自動化/1706221535CL.shtml target='_blank'>關燈工廠≠智慧工廠 人工智慧才是關鍵 </a></td></tr><tr><td>2017.06.19</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/雲端/大數據/數位轉型/工業4.0/微軟/1706191725ZF.shtml target='_blank'>攜手KPMG 微軟全力協助台企業數位轉型 </a></td></tr><tr><td>2017.06.14</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/5G/Keysight/是德科技/17061419502B.shtml target='_blank'>是德：5G正以極快速度來臨！ </a></td></tr><tr><td>2017.06.13</td><td><a href=http://www.ctimes.com.tw/DispNews/tw/智慧製造/CPS/VR/ERP/鼎新/17061312164X.shtml target='_blank'>轉型智慧製造進度 台廠仍以2.0半自動化居多 </a></td></tr><tr><td>2017.06.12</td><td><a href=http://www.ctimes.com.tw/DispArt/tw/1706121625DA.shtml target='_blank'>CTIMES嚴選 Computex 2017亮點廠商 </a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+<!--8 -->
+<div id="google_search_payment" class="tabcontent">
+<h2>8.行動支付、電子支付、第三方支付<br></h2>
+
+<table width=800 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017-07-14</td><td><a href=http://news.ltn.com.tw/news/life/breakingnews/2130925 target='_blank'>方便！電子支付用戶發票中獎獎金可直接匯入帳戶</a></td></tr><tr><td>2017-07-14</td><td><a href=http://news.tvbs.com.tw/world/746182 target='_blank'>大陸行動支付領先買菜、繳房租都靠手機</a></td></tr><tr><td>2017-07-14</td><td><a href=https://unwire.hk/2017/07/13/hong-kong-road-tunnels-and-highways-will-accept-electronic-payment/life-tech/ target='_blank'>政府收費隧道+ 公路2017 可「拍卡」! 八達通+ 信用咭電子支付</a></td></tr><tr><td>2017-07-14</td><td><a href=http://hd.stheadline.com/news/columns/792/20170714/584330/ target='_blank'>﻿太量微觀——香港電子支付發展難破瓶頸</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/plus/9396/2582485 target='_blank'>「五元奪寶」APP涉賭3個月獲利近億元</a></td></tr><tr><td>2017-07-14</td><td><a href=https://udn.com/news/story/7240/2582470 target='_blank'>三星行動通訊總裁來台近年最高層主管</a></td></tr><tr><td>2017-07-12</td><td><a href=http://news.tvbs.com.tw/life/745785 target='_blank'>新！大數據掌握行動支付銷量有望增2成</a></td></tr><tr><td>2017-07-12</td><td><a href=http://times.hinet.net/news/20291905 target='_blank'>推廣行動支付全台首場無現金交易市集0722將於中市草悟道登場</a></td></tr><tr><td>2017-07-12</td><td><a href=http://times.hinet.net/news/20292642 target='_blank'>阿裏巴巴無人商店電子支付離開即買單</a></td></tr><tr><td>2017-07-12</td><td><a href=http://www.chinatimes.com/newspapers/20170713000194-260210 target='_blank'>渣打信用卡綁Android Pay 享35％現金回饋</a></td></tr><tr><td>2017-07-12</td><td><a href=http://www.chinatimes.com/newspapers/20170713000883-260310 target='_blank'>發展無人商店關鍵在行動支付</a></td></tr><tr><td>2017-07-12</td><td><a href=https://www.mobile01.com/topicdetail.php?f=423&t=5207911 target='_blank'>悠遊卡公司的悠遊卡行動支付將不用NFC技術, 改用藍芽技術</a></td></tr><tr><td>2017-07-12</td><td><a href=http://news.sina.com.tw/article/20170713/23036044.html target='_blank'>移動支付市場大幅擴張Square年內大漲90%</a></td></tr><tr><td>2017-07-12</td><td><a href=http://news.cnyes.com/news/id/3865664 target='_blank'>銀聯拓展QR code支付加速布局全球版圖首波鎖定東南亞、東北亞</a></td></tr><tr><td>2017-07-11</td><td><a href=https://skypost.ulifestyle.com.hk/article/1855424/%E6%A9%9F%E6%A2%B0%E4%BA%BA%E6%99%82%E4%BB%A3%E7%9A%84%20%E9%9B%BB%E5%AD%90%E6%94%AF%E4%BB%98%E5%A4%A7%E6%BD%AE target='_blank'>機械人時代的電子支付大潮</a></td></tr><tr><td>2017-07-11</td><td><a href=https://www.moneydj.com/KMDJ/News/NewsViewer.aspx?a=211f2a4c-fde1-4752-bac8-e0b7ff87091d target='_blank'>PayPal該提親？電子支付係統服務商Square創歷史新高</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000505911_4SULI26605LQIF29FGQYK&ct=1 target='_blank'>印度行動支付繁榮卻危險</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.setn.com/News.aspx?NewsID=271923 target='_blank'>行動支付新時代！避免手機中毒這些使用壞習慣要改</a></td></tr><tr><td>2017-07-11</td><td><a href=http://house.cnyes.com/global/news/3865073.do target='_blank'>柬埔寨告別現金時代？行動支付服務方興未艾</a></td></tr><tr><td>2017-07-11</td><td><a href=http://www.storm.mg/stylish/297405 target='_blank'>行動支付新體驗！鼓勵使用Android Pay綁定信用卡，祭出電影加碼 ...</a></td></tr><tr><td>2017-07-10</td><td><a href=http://www.chinatimes.com/newspapers/20170711000095-260205 target='_blank'>力推支付銀行促鬆綁非約轉上限</a></td></tr><tr><td>2017-07-10</td><td><a href=http://www.chinatimes.com/newspapers/20170711000093-260205 target='_blank'>攻行動金融卡公股銀帶頭衝</a></td></tr><tr><td>2017-07-10</td><td><a href=https://udn.com/news/story/7239/2575102 target='_blank'>行動支付平均每筆嗶500元便利店占五成</a></td></tr><tr><td>2017-07-09</td><td><a href=http://m.appledaily.com.tw/realtimenews/article/new/20170710/1157730/ target='_blank'>管你什麼「呸」！這地方電子支付通通不收</a></td></tr><tr><td>2017-07-09</td><td><a href=https://www.mobile01.com/topicdetail.php?f=568&t=5204932 target='_blank'>【地表最強の行動支付】Samsung讓您無所不Pay～</a></td></tr><tr><td>2017-07-08</td><td><a href=http://www.chinatimes.com/realtimenews/20170709000002-260412 target='_blank'>支付寶8月辦「無現金城市週」台灣到底還要等多久？</a></td></tr><tr><td>2017-07-07</td><td><a href=http://times.hinet.net/news/20285253 target='_blank'>名人信用卡》馬克鑽研刷卡學體驗行動支付</a></td></tr><tr><td>2017-07-07</td><td><a href=http://big5.xinhuanet.com/gate/big5/news.xinhuanet.com/gangao/2017-07/07/c_1121284424.htm target='_blank'>發展滯後但未來可期——香港移動支付市場透視</a></td></tr><tr><td>2017-07-07</td><td><a href=https://udn.com/news/story/7326/2571172 target='_blank'>響應行動支付逛台北永康商圈不必帶鈔票</a></td></tr><tr><td>2017-07-06</td><td><a href=http://www.digitimes.com.tw/iot/article.asp?cat=130&cat1=40&id=0000506651_UU957ELW6N5EKP02N1UB4 target='_blank'>國泰世華銀行成為Android Pay合作夥伴全麵支援行動支付幸福新生活</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+<!--8 -->
+<div id="google_search_regulatory_sandbox" class="tabcontent">
+<h2>9.google搜尋-監理沙盒<br></h2>
+
+<table width=800 border=10>
+<tr><td>日期</td><td>標題</td></tr>
+<tr><td>2017-07-11</td><td><a href=http://magazine.chinatimes.com/globalviews/20170712003229-300105 target='_blank'>小心，愈來愈多人跟台灣說再見</a></td></tr><tr><td>2017-07-10</td><td><a href=http://www.chinatimes.com/newspapers/20170711000913-260310 target='_blank'>盡速擬定新創監理沙盒法案</a></td></tr><tr><td>2017-07-10</td><td><a href=https://www.informationsecurity.com.tw/article/article_detail.aspx?tv=24&aid=8476 target='_blank'>資訊資安新法並進安全基礎下推動台灣數位經濟</a></td></tr><tr><td>2017-07-04</td><td><a href=https://money.udn.com/money/story/6709/2564212 target='_blank'>終身學習／EMBA掌握趨勢瞄準生醫FinTech</a></td></tr><tr><td>2017-07-03</td><td><a href=http://www.ettoday.net/news/20170704/958806.htm target='_blank'>神秘沙盒扶植金融創新金融監理沙盒的公務員免責建言</a></td></tr><tr><td>2017-07-02</td><td><a href=http://news.cnyes.com/news/id/3855421 target='_blank'>Fintech產促會成立?亨網參與打造金融科技環境</a></td></tr><tr><td>2017-06-29</td><td><a href=http://news.cnyes.com/news/id/3853253 target='_blank'>KPMG調查：台灣CEO最擔心內需市場小、轉型速度慢、政策變化</a></td></tr><tr><td>2017-06-28</td><td><a href=http://www.chinatimes.com/newspapers/20170629000114-260205 target='_blank'>大陸第3大網路借貸平台點融網創辦人蘇海德： FinTech發展要因地製宜</a></td></tr><tr><td>2017-06-24</td><td><a href=http://www.cna.com.tw/news/firstnews/201706245009-1.aspx target='_blank'>林全接受日本經濟新聞專訪問答全文</a></td></tr><tr><td>2017-06-15</td><td><a href=http://wealth.businessweekly.com.tw/GArticle.aspx?id=ARTL000091971 target='_blank'>「監理沙盒」將創造金融新服務</a></td></tr>
+
+</table>
+</div>
+</body>
+</html> 
+
+</table>
+
+<!--8 -->
+<div id="youtube_tvbs_t" class="tabcontent">
+<h2>10.YouTube<br>T觀點</h2>
+
+<table width=1300 border=10>
+<tr><td>日期</td><td>標題</td><td>觀看人數</td><td>推</td><td>噓</td></tr>
+<tr><td>2017年7月12日</td><td><a href=https://www.youtube.com/watch?v=ZMKF9me-kpY&index=1&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#96 PROMO</td><td>91</td><td>0</td><td>0</td></tr><tr><td>2017年7月9日</td><td><a href=https://www.youtube.com/watch?v=iA2Lv3AbqCQ&index=2&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>P2P網路借貸安全零風險!?  投資密碼 風險管控大公開 T觀點 20170709 (3/3)</td><td>833</td><td>7</td><td>0</td></tr><tr><td>2017年7月9日</td><td><a href=https://www.youtube.com/watch?v=g1qVOMAr1ds&index=3&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>手機一秒變銀行 當科技遇上金融 引爆潮流 T觀點 20170709 (2/4)</td><td>1,045</td><td>9</td><td>1</td></tr><tr><td>2017年7月9日</td><td><a href=https://www.youtube.com/watch?v=ms27_DZyPcc&index=4&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>金融科技嗶商機爆發! 行動支付新時代無現金社會來臨 T觀點 20170709 (1/4)</td><td>2,997</td><td>12</td><td>3</td></tr><tr><td>2017年7月5日</td><td><a href=https://www.youtube.com/watch?v=xSFpDnlFIws&index=5&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#95 PROMO</td><td>358</td><td>1</td><td>0</td></tr><tr><td>2017年7月2日</td><td><a href=https://www.youtube.com/watch?v=Vfl67Z9WXCs&index=6&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>胰臟癌新藥 能一藥多用！？下一步 針對小細胞肺癌...T觀點 20170702 (3/4)</td><td>633</td><td>2</td><td>0</td></tr><tr><td>2017年7月2日</td><td><a href=https://www.youtube.com/watch?v=w6iOeaD557A&index=7&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>藥費好貴 癌症患者沉重吶喊 口袋不深罹癌只能望藥興嘆！？T觀點 20170702 (4/4)</td><td>443</td><td>2</td><td>0</td></tr><tr><td>2017年7月2日</td><td><a href=https://www.youtube.com/watch?v=_dFKzRgqGr8&index=8&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>聞癌色變 人類健康大威脅 癌症時鐘加快 抗癌保衛戰 T觀點 20170702 (1/4)</td><td>542</td><td>2</td><td>1</td></tr><tr><td>2017年7月2日</td><td><a href=https://www.youtube.com/watch?v=pNEPK4jOTXs&index=9&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>消滅癌細胞 技術再突破 微波、注射 重裝上陣...T觀點 20170702 (2/4)</td><td>533</td><td>5</td><td>0</td></tr><tr><td>2017年6月28日</td><td><a href=https://www.youtube.com/watch?v=dQRLS0Ganjo&index=10&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#94 PROMO</td><td>371</td><td>1</td><td>0</td></tr><tr><td>2017年6月25日</td><td><a href=https://www.youtube.com/watch?v=pRsVS5XWncA&index=11&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>規律運動精神好 工作效率高 「運動企業」認證 雇主員工雙贏 T觀點 20170625 (3/4)</td><td>264</td><td>0</td><td>0</td></tr><tr><td>2017年6月25日</td><td><a href=https://www.youtube.com/watch?v=EW4MwKEaVmk&index=12&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>動起來！9月9日「國民體育日」體表會大秀運動絕技 瘋一夏 T觀點 20170625 (2/4)</td><td>166</td><td>0</td><td>0</td></tr><tr><td>2017年6月25日</td><td><a href=https://www.youtube.com/watch?v=5jKlzNuc9Kw&index=13&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>迎接世大運 台灣準備好！傳遞軟硬體實力 決戰8/19 T觀點 20170625 (1/4)</td><td>734</td><td>7</td><td>2</td></tr><tr><td>2017年6月25日</td><td><a href=https://www.youtube.com/watch?v=C811iga7vsA&index=14&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>產業新南向 運動也新南向 翻轉台灣足球 體育署出招 T觀點 20170625 (4/4)</td><td>180</td><td>1</td><td>1</td></tr><tr><td>2017年6月21日</td><td><a href=https://www.youtube.com/watch?v=nUgoDMkeCyE&index=15&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#93 PROMO</td><td>176</td><td>3</td><td>0</td></tr><tr><td>2017年6月18日</td><td><a href=https://www.youtube.com/watch?v=6LTyBI31Ezg&index=16&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>農業新視野 從無毒農法做起 擴大友善耕作 落實全面有機 T觀點 20170618 (1/4)</td><td>741</td><td>5</td><td>0</td></tr><tr><td>2017年6月18日</td><td><a href=https://www.youtube.com/watch?v=K8uZNe9YrRo&index=17&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>花蓮韭菜農成產銷履歷典範... 掃描產銷履歷條碼資訊全透明 T觀點 20170618 (4/4)</td><td>364</td><td>1</td><td>0</td></tr><tr><td>2017年6月18日</td><td><a href=https://www.youtube.com/watch?v=4nLVIPfiYaY&index=18&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>我的營養午餐有四章一Q！校園裡的有機革命 T觀點 20170618 (2/4)</td><td>597</td><td>1</td><td>0</td></tr><tr><td>2017年6月18日</td><td><a href=https://www.youtube.com/watch?v=QynJx82dyRo&index=19&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>有機地瓜遇上糙米 台灣後山富里好食在 T觀點 20170618 (3/4)</td><td>700</td><td>3</td><td>0</td></tr><tr><td>2017年6月15日</td><td><a href=https://www.youtube.com/watch?v=uClPHQB4GG4&index=20&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#92 PROMO</td><td>238</td><td>1</td><td>0</td></tr><tr><td>2017年6月11日</td><td><a href=https://www.youtube.com/watch?v=l2O3KRu13kY&index=21&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>永凍層下造植物方舟 種子金庫藏冷岸群島 T觀點 20170611 (2/4)</td><td>1,223</td><td>9</td><td>1</td></tr><tr><td>2017年6月11日</td><td><a href=https://www.youtube.com/watch?v=WhzpqjuwH5M&index=22&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>瀕危植物武威山烏皮茶 野外現蹤 T觀點 20170611 (3/4)</td><td>617</td><td>3</td><td>0</td></tr><tr><td>2017年6月11日</td><td><a href=https://www.youtube.com/watch?v=gmO7Ul8Or08&index=23&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>素人廚房隨手做 番茄、辣椒、薑留種 T觀點 20170611 (4/4)</td><td>408</td><td>2</td><td>0</td></tr><tr><td>2017年6月11日</td><td><a href=https://www.youtube.com/watch?v=nBNS_JPAfjg&index=24&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>全球四億人口主食 香蕉面臨滅絕危機 T觀點 20170611 (1/4)</td><td>5,580</td><td>16</td><td>5</td></tr><tr><td>2017年6月8日</td><td><a href=https://www.youtube.com/watch?v=GIGs34Gcwlw&index=25&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#91 PROMO</td><td>318</td><td>1</td><td>0</td></tr><tr><td>2017年5月21日</td><td><a href=https://www.youtube.com/watch?v=wlPs42mTzxE&index=26&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>水劑藥廠為根 創生技工業銀行藍圖 T觀點 20170521 (2/4)</td><td>1,740</td><td>4</td><td>0</td></tr><tr><td>2017年5月21日</td><td><a href=https://www.youtube.com/watch?v=GzQ3nY6CnUE&index=27&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>「精準醫療」提早發現病因、對症下藥 T觀點 20170521 (3/4)</td><td>1,187</td><td>2</td><td>1</td></tr><tr><td>2017年5月21日</td><td><a href=https://www.youtube.com/watch?v=iG9qbefvjuY&index=28&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>下一步 台生技路怎麼走？！科學、法規、市場 誰來整合？！T觀點 20170521 (4/4)</td><td>1,631</td><td>3</td><td>0</td></tr><tr><td>2017年5月21日</td><td><a href=https://www.youtube.com/watch?v=A9rpgsc5kBo&index=29&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>企業重生舵手 建國內最大水劑藥廠 T觀點 20170521 (1/4)</td><td>1,983</td><td>4</td><td>0</td></tr><tr><td>2017年5月17日</td><td><a href=https://www.youtube.com/watch?v=i3xtJ725Coc&index=30&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#90 PROMO</td><td>1,142</td><td>2</td><td>1</td></tr><tr><td>2017年5月14日</td><td><a href=https://www.youtube.com/watch?v=Hrt4violR7k&index=31&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>送行者 喪禮上的導演... 撫慰生者心靈 禮儀師的秘密 T觀點 20170514 (3/4)</td><td>1,049</td><td>3</td><td>0</td></tr><tr><td>2017年5月14日</td><td><a href=https://www.youtube.com/watch?v=DEI7VOHL4ns&index=32&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>AR技術再見故人 日行動殯葬 數位遺產怎處理？美國新解方 T觀點 20170514 (4/4)</td><td>945</td><td>4</td><td>0</td></tr><tr><td>2017年5月14日</td><td><a href=https://www.youtube.com/watch?v=iiS584LaQYo&index=33&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>殯葬業員工宿舍蓋園區裡 不怕！供吃住背後 全心服務家屬 T觀點 20170514 (2/4)</td><td>1,293</td><td>2</td><td>0</td></tr><tr><td>2017年5月14日</td><td><a href=https://www.youtube.com/watch?v=ErmMhbWfJi0&index=34&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>日本殯葬商機興起！老人提前準備身後事、安排自己葬禮 盼減少子孫負擔 T觀點 20170514 (1/4)</td><td>1,075</td><td>4</td><td>0</td></tr><tr><td>2017年5月10日</td><td><a href=https://www.youtube.com/watch?v=ihC-JruPCHg&index=35&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#89 PROMO</td><td>757</td><td>5</td><td>0</td></tr><tr><td>2017年5月7日</td><td><a href=https://www.youtube.com/watch?v=Y4904x4hKrQ&index=36&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>撇快時尚 穿了就丟迷思 再造衣銀行 潮服登國際！T觀點 20170507 (4/4)</td><td>1,462</td><td>5</td><td>1</td></tr><tr><td>2017年5月7日</td><td><a href=https://www.youtube.com/watch?v=ZzgM42n7SzI&index=37&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>喝完就丟 飲料杯去哪裡？創新設計 環保這樣做... T觀點 20170507 (3/4)</td><td>2,729</td><td>12</td><td>0</td></tr><tr><td>2017年5月7日</td><td><a href=https://www.youtube.com/watch?v=KQrk_B2RwO8&index=38&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>神奇煉金 廢棄物轉生術 點瓶成沙 酒矸倘賣無成絕響？T觀點 20170507 (1/4)</td><td>1,526</td><td>6</td><td>0</td></tr><tr><td>2017年5月7日</td><td><a href=https://www.youtube.com/watch?v=BrgfRHf9RzQ&index=39&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>廢棄物重生 向垃圾說ByeBye！循環經濟轉出綠金商機 T觀點 20170507 (2/4)</td><td>1,181</td><td>4</td><td>1</td></tr><tr><td>2017年5月4日</td><td><a href=https://www.youtube.com/watch?v=GOGivNKAchc&index=40&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#88 PROMO</td><td>695</td><td>3</td><td>0</td></tr><tr><td>2017年4月30日</td><td><a href=https://www.youtube.com/watch?v=U_xpiGM6j8w&index=41&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>樂天搶大餅滑世代來臨 讀書少上網多 電子書藍海  T觀點 20170430 (2/4)</td><td>921</td><td>4</td><td>1</td></tr><tr><td>2017年4月30日</td><td><a href=https://www.youtube.com/watch?v=oP7duB4Jbrg&index=42&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>出版界新南向 走出台灣 打開閱讀力 打開全世界 T觀點 20170430 (4/4)</td><td>509</td><td>0</td><td>0</td></tr><tr><td>2017年4月30日</td><td><a href=https://www.youtube.com/watch?v=anu8SAHerck&index=43&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>閱讀人口少 出版冰風暴 書市大蕭條 迫切的危機 T觀點 20170430 (3/4)</td><td>503</td><td>1</td><td>0</td></tr><tr><td>2017年4月30日</td><td><a href=https://www.youtube.com/watch?v=9I24LQSJyOY&index=44&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>閱讀的力量 翻轉人生！每天閱讀 幫大腦做瑜珈 T觀點 20170430 (1/4)</td><td>2,818</td><td>16</td><td>0</td></tr><tr><td>2017年4月27日</td><td><a href=https://www.youtube.com/watch?v=BRSGCQWMFoQ&index=45&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#87 PROMO</td><td>360</td><td>0</td><td>0</td></tr><tr><td>2017年4月23日</td><td><a href=https://www.youtube.com/watch?v=UKM5wDBW5O8&index=46&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>未來廚房好幫手！用3D列印「客製化食物」T觀點 20170423 (4/4)</td><td>1,829</td><td>4</td><td>1</td></tr><tr><td>2017年4月23日</td><td><a href=https://www.youtube.com/watch?v=wGBveWL1iCs&index=47&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>大樓裡種蔬果！科技人跨足植物工廠 種出超夯蔬菜 T觀點 20170423 (2/4)</td><td>2,864</td><td>14</td><td>4</td></tr><tr><td>2017年4月23日</td><td><a href=https://www.youtube.com/watch?v=8oc0pRAblCo&index=48&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>現在、未來 餐桌大革命！超完美假貨 未來食物夯 T觀點 20170423 (1/4)</td><td>3,369</td><td>12</td><td>0</td></tr><tr><td>2017年4月23日</td><td><a href=https://www.youtube.com/watch?v=hQmMQHgeu7o&index=49&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>全球第一！荷蘭科技生態村 打造烏托邦 美麗新世界 T觀點 20170423 (3/4)</td><td>3,464</td><td>13</td><td>1</td></tr><tr><td>2017年4月20日</td><td><a href=https://www.youtube.com/watch?v=nIrOBXju11g&index=50&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#86 PROMO</td><td>767</td><td>2</td><td>0</td></tr><tr><td>2017年4月16日</td><td><a href=https://www.youtube.com/watch?v=mZVkjuQHW3Y&index=51&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>醫療大進擊 3D新革命 列印活體器官 指日可待！T觀點 20170416 (1/4)</td><td>1,841</td><td>7</td><td>0</td></tr><tr><td>2017年4月16日</td><td><a href=https://www.youtube.com/watch?v=v7JPKASs_NQ&index=52&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>3D列印醫療技術大躍進！製大腿骨、腳掌助開刀 正顎手術快又準 T觀點 20170416 (2/4)</td><td>1,708</td><td>7</td><td>0</td></tr><tr><td>2017年4月16日</td><td><a href=https://www.youtube.com/watch?v=_W0DBirBu1U&index=53&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>生物墨水大進擊 印出細胞 血管、神經導管分解再生！？T觀點 20170416 (3/4)</td><td>1,063</td><td>6</td><td>0</td></tr><tr><td>2017年4月16日</td><td><a href=https://www.youtube.com/watch?v=rs2jOJTGnXE&index=54&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>台灣醫療技術揚名國際！新微創手術 造福癌患者 T觀點 20170416 (4/4)</td><td>612</td><td>2</td><td>1</td></tr><tr><td>2017年4月12日</td><td><a href=https://www.youtube.com/watch?v=PbZ_bigfQKU&index=55&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#85 PROMO</td><td>632</td><td>1</td><td>0</td></tr><tr><td>2017年4月10日</td><td><a href=https://www.youtube.com/watch?v=qjS4Zx9dqIg&index=56&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>從「通信販售」肌膚履歷 一條電話線有溫度的服務 隔空鞠躬敬禮 T觀點 20170409 (4/4)</td><td>2,524</td><td>7</td><td>1</td></tr><tr><td>2017年4月10日</td><td><a href=https://www.youtube.com/watch?v=VQqUoHrRwsU&index=57&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>不可思議！朵茉麗蔻森林裡的工園 作業八小時四小時在清潔 T觀點 20170409 (3/4)</td><td>1,642</td><td>8</td><td>0</td></tr><tr><td>2017年4月10日</td><td><a href=https://www.youtube.com/watch?v=dJnJXQpP8_4&index=58&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>日本膠原蛋白抗老始祖！八隻保養品站穩市場 研發秘密基地首度曝光 T觀點 20170409 (2/4)</td><td>1,056</td><td>1</td><td>0</td></tr><tr><td>2017年4月10日</td><td><a href=https://www.youtube.com/watch?v=fqWiBjPNaxA&index=59&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>抗老逆齡！女性的新課題 漢方製藥起家 來自熊本保養品 T觀點 20170409 (1/4)</td><td>609</td><td>2</td><td>0</td></tr><tr><td>2017年4月2日</td><td><a href=https://www.youtube.com/watch?v=qmj4IZwNsJs&index=60&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>運動觀光熱 國境之美 一場賽是盡收眼底 T觀點 20170402 (4/4)</td><td>903</td><td>1</td><td>1</td></tr><tr><td>2017年4月2日</td><td><a href=https://www.youtube.com/watch?v=lwhY2OiXjEI&index=61&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>香港搶商機 F1.橄欖球 撐起觀光產業 T觀點 20170402 (3/4)</td><td>1,058</td><td>1</td><td>0</td></tr><tr><td>2017年4月2日</td><td><a href=https://www.youtube.com/watch?v=2dr5cCB6ngs&index=62&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>自由車一哥馮俊凱七月挑戰地表最困難運動-環法賽  T觀點 20170402 (2/4)</td><td>18,090</td><td>71</td><td>5</td></tr><tr><td>2017年4月2日</td><td><a href=https://www.youtube.com/watch?v=4vdkZNGGdew&index=63&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>自由車環台賽 台灣新亮點 T觀點 20170402 (1/4)</td><td>10,611</td><td>26</td><td>1</td></tr><tr><td>2017年3月29日</td><td><a href=https://www.youtube.com/watch?v=XV0d4mk78Iw&index=64&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#84 PROMO</td><td>756</td><td>0</td><td>0</td></tr><tr><td>2017年3月26日</td><td><a href=https://www.youtube.com/watch?v=GBneYGwnD8A&index=65&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>善用體保生 職場新活水 發現不一樣價值！創三贏 T觀點 20170326 (3/4)</td><td>797</td><td>2</td><td>0</td></tr><tr><td>2017年3月26日</td><td><a href=https://www.youtube.com/watch?v=GBNqhClXPrA&index=66&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>企業經營融合運動顯學 效仿籃球隊 團隊是關鍵 T觀點 20170326 (2/4)</td><td>412</td><td>0</td><td>0</td></tr><tr><td>2017年3月26日</td><td><a href=https://www.youtube.com/watch?v=HpKCX8g_hHk&index=67&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>做好準備才能擁抱機會 訂目標 搶人生勝利組門票 T觀點 20170326 (4/4)</td><td>555</td><td>2</td><td>1</td></tr><tr><td>2017年3月26日</td><td><a href=https://www.youtube.com/watch?v=-sCu4cNr68w&index=68&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>太幸福了！霸氣老闆疼員工 極盡所能 打造幸福職場 T觀點 20170326 (1/4)</td><td>1,998</td><td>4</td><td>2</td></tr><tr><td>2017年3月22日</td><td><a href=https://www.youtube.com/watch?v=Jfmn_MFGK38&index=69&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#83 PROMO</td><td>540</td><td>2</td><td>0</td></tr><tr><td>2017年3月19日</td><td><a href=https://www.youtube.com/watch?v=LDOffCanCt4&index=70&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>程式教育 另類第二語言 歐美大國 打造程式邏輯腦 T觀點 20170319 (1/4)</td><td>2,790</td><td>9</td><td>0</td></tr><tr><td>2017年3月19日</td><td><a href=https://www.youtube.com/watch?v=xt53OvE798o&index=71&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>Coding改寫未來 教育關鍵字 107列課綱 教育轉機！？危機！？T觀點 20170319 (2/4)</td><td>1,546</td><td>3</td><td>0</td></tr><tr><td>2017年3月19日</td><td><a href=https://www.youtube.com/watch?v=zBqqpLtgKqA&index=72&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>出錢出力 還幫忙訓練師資 蘇文鈺撒豆成兵 反轉翻轉coding T觀點 20170319 (4/4)</td><td>813</td><td>3</td><td>0</td></tr><tr><td>2017年3月19日</td><td><a href=https://www.youtube.com/watch?v=FsUTBjNa7QY&index=73&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>蘇文鈺創客精神大爆發 「咖啡過濾器」登上群眾募資 為偏鄉程式教育籌經費 T觀點 20170319 (3/4)</td><td>2,808</td><td>29</td><td>1</td></tr><tr><td>2017年3月16日</td><td><a href=https://www.youtube.com/watch?v=bJr5oX0MMaw&index=74&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#82 PROMO</td><td>434</td><td>3</td><td>0</td></tr><tr><td>2017年3月12日</td><td><a href=https://www.youtube.com/watch?v=-jhp95FD5cE&index=75&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>PM2.5空汙拉警報！隱形殺手「長期暴露」增加肺癌風險 T觀點 20170312 (1/4)</td><td>1,428</td><td>8</td><td>1</td></tr><tr><td>2017年3月12日</td><td><a href=https://www.youtube.com/watch?v=XB3-48ud7qo&index=76&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>雲林縣發展難題 六輕產值VS環境保護 T觀點 20170312 (2/4)</td><td>805</td><td>3</td><td>1</td></tr><tr><td>2017年3月12日</td><td><a href=https://www.youtube.com/watch?v=8Qwm3RLBaWQ&index=77&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>全球反空汙！哥本哈根邁向永續 將成全球首座無碳城市 T觀點 20170312 (3/4)</td><td>438</td><td>1</td><td>0</td></tr><tr><td>2017年3月12日</td><td><a href=https://www.youtube.com/watch?v=Mm-88vxO8RU&index=78&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>防霧霾背包、魔術口罩頭巾 創客抗空汙 大搶灰色商機 T觀點 20170312 (4/4)</td><td>512</td><td>3</td><td>0</td></tr><tr><td>2017年3月9日</td><td><a href=https://www.youtube.com/watch?v=SfySonaDNzY&index=79&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#81 PROMO</td><td>328</td><td>1</td><td>0</td></tr><tr><td>2017年3月5日</td><td><a href=https://www.youtube.com/watch?v=sibtOStjBuw&index=80&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>維冠倒塌周年 強震後省思 斷層多地震頻 結構大體檢 T觀點 20170305 (1/4)</td><td>846</td><td>4</td><td>0</td></tr><tr><td>2017年3月5日</td><td><a href=https://www.youtube.com/watch?v=llfV-DkxYkg&index=81&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>921強震後 建物真安全？！揭開台建築結構真面目！T觀點 20170305 (2/4)</td><td>700</td><td>4</td><td>0</td></tr><tr><td>2017年3月5日</td><td><a href=https://www.youtube.com/watch?v=In9j9c4G2-A&index=82&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>建築安全履歷 顛覆傳統監造 綁鐵仔變職人 為建案加分... T觀點 20170305 (3/4)</td><td>604</td><td>5</td><td>0</td></tr><tr><td>2017年3月5日</td><td><a href=https://www.youtube.com/watch?v=0a5kHAoO3Yw&index=83&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>用「特殊保麗龍」蓋房子 全日本逾千棟 工法出新招 耐震一級棒 T觀點 20170305 (4/4)</td><td>49,079</td><td>136</td><td>16</td></tr><tr><td>2017年3月1日</td><td><a href=https://www.youtube.com/watch?v=mn3Km6fUV5o&index=84&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#80 PROMO</td><td>469</td><td>0</td><td>0</td></tr><tr><td>2017年2月26日</td><td><a href=https://www.youtube.com/watch?v=kyJ_jPjnSJU&index=85&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>AI機器人狂潮席捲全球 人工智慧時代正式來臨 T觀點 20170226 (1/4)</td><td>25,853</td><td>83</td><td>10</td></tr><tr><td>2017年2月26日</td><td><a href=https://www.youtube.com/watch?v=-xoa78bz2kk&index=86&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>祖克柏創智慧管家賈維斯 搶攻AI市場 商機大無限 T觀點 20170226 (2/4)</td><td>5,616</td><td>21</td><td>0</td></tr><tr><td>2017年2月26日</td><td><a href=https://www.youtube.com/watch?v=bRlVROIioTM&index=87&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>邁向未來 人工智慧大爆發 人腦敵不過電腦時代降臨！？ T觀點 20170226 (3/4)</td><td>7,007</td><td>25</td><td>3</td></tr><tr><td>2017年2月26日</td><td><a href=https://www.youtube.com/watch?v=CDzHZrvbZj4&index=88&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>科技始終來自於人性 AI背後的人類 才是重點！ T觀點 20170226 (4/4)</td><td>4,007</td><td>19</td><td>2</td></tr><tr><td>2017年2月22日</td><td><a href=https://www.youtube.com/watch?v=knKeomEurYQ&index=89&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#79 PROMO</td><td>437</td><td>1</td><td>0</td></tr><tr><td>2017年2月19日</td><td><a href=https://www.youtube.com/watch?v=WfNk0QGttoo&index=90&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>長頸鹿.獵豹.斑馬.大猩猩 列「易危」物種 30年數量銳減四成 T觀點 20170219 (1/4)</td><td>361</td><td>2</td><td>0</td></tr><tr><td>2017年2月19日</td><td><a href=https://www.youtube.com/watch?v=y7y30ykqQeM&index=91&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>強效麻醉斷犀角 保護犀牛不得已去角 T觀點 20170219 (3/4)</td><td>561</td><td>2</td><td>0</td></tr><tr><td>2017年2月19日</td><td><a href=https://www.youtube.com/watch?v=4wxPzdbJMTc&index=92&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>犀牛瀕臨絕種 護犀角力戰 TVBS直擊 地圖找不到的犀牛孤兒院 T觀點 20170219 (2/4)</td><td>489</td><td>0</td><td>0</td></tr><tr><td>2017年2月19日</td><td><a href=https://www.youtube.com/watch?v=YEpC-kNI_-o&index=93&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>墨爾本企鵝歸巢奇觀！生態遊 玩＝保育 T觀點 20170219 (4/4)</td><td>429</td><td>0</td><td>0</td></tr><tr><td>2017年2月15日</td><td><a href=https://www.youtube.com/watch?v=BqamAEof1Ck&index=94&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#78 PROMO</td><td>314</td><td>2</td><td>0</td></tr><tr><td>2017年2月12日</td><td><a href=https://www.youtube.com/watch?v=5HWLTErLDhI&index=95&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>CARTEC擔重任 研發新車款 T觀點 20170212 (1/4)</td><td>4,739</td><td>9</td><td>1</td></tr><tr><td>2017年2月12日</td><td><a href=https://www.youtube.com/watch?v=7FFfnhD9O2w&index=96&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>中華汽車打造幸福企業 從員工餐廳開始 原民產銷計畫 企業、小農雙贏 T觀點 20170212 (2/4)</td><td>785</td><td>2</td><td>0</td></tr><tr><td>2017年2月12日</td><td><a href=https://www.youtube.com/watch?v=LNeYfioVSPM&index=97&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>宜蘭礁溪 老屋變身文創基地 汽車公司做公益 T觀點 20170212 (3/4)</td><td>542</td><td>4</td><td>0</td></tr><tr><td>2017年2月12日</td><td><a href=https://www.youtube.com/watch?v=3uDPSwwi5W0&index=98&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>四輪品質造兩輪車 電動機車顧綠能 T觀點 20170212 (4/4)</td><td>11,662</td><td>21</td><td>2</td></tr><tr><td>2017年2月9日</td><td><a href=https://www.youtube.com/watch?v=UDAZREOcp3c&index=99&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>T觀點#77 PROMO</td><td>613</td><td>4</td><td>0</td></tr><tr><td>2017年2月5日</td><td><a href=https://www.youtube.com/watch?v=hL7vu8Sy2BY&index=100&list=PLRPdZdTG7HaBjA2bnJRf_RwFgtXNiR9ds target='_blank'>早期止痛法 灌酒、打昏病人？！90秒截肢術 瘋狂醫師快狠準 T觀點 20170205 (1/4)</td><td>473</td><td>2</td><td>0</td></tr>
+
+<!--horizontal_tablinks 水平 -->
+<script>
+function horizontal(enent, division) {
+    var i, horizontal_tabcontent, horizontal_tablinks;
+    horizontal_tabcontent = document.getElementsByClassName("horizontal_tabcontent");
+    for (i = 0; i < horizontal_tabcontent.length; i++) {
+        horizontal_tabcontent[i].style.display = "none";
+    }
+    horizontal_tablinks = document.getElementsByClassName("horizontal_tablinks");
+    for (i = 0; i < horizontal_tablinks.length; i++) {
+        horizontal_tablinks[i].className = horizontal_tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(division).style.display = "block";
+    enent.currentTarget.className += " active";
+}
+</script>
+
+<!--tabcontent 垂直 -->
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+ }
+
+// Get the element with id="defaultOpen" and click on it
+//document.getElementById("defaultOpen").click();
+</script>
+
+
+<!--myInput 搜尋 -->
+<script>
+function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('button');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("h3")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "600px";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+
+
+    <!-- 回到頂端按鈕 start -->
+    <script>
+    //<![CDATA[
+    (function () {
+    $("body").append("<img id='goTopButton' style='display: none; z-index: 5; cursor: pointer;' title='回到頂端'/>");
+    var img = "http://1.bp.blogspot.com/-zMfrIkyhlVs/Uh7FePoKU8I/AAAAAAAAHnA/WA0H_vbWAWc/s1600/go-top.png",
+    locatioin = 1/2, // 按鈕出現在螢幕的高度
+    left = 30, // 距離右邊 px 值
+    opacity = 1, // 透明度
+    speed = 500, // 捲動速度
+    $button = $("#goTopButton"),
+    $body = $(document),
+    $win = $(window);
+    $button.attr("src", img);
+    $button.on({
+    mouseover: function() {$button.css("opacity", 1);},
+    mouseout: function() {$button.css("opacity", opacity);},
+    click: function() {$("html, body").animate({scrollTop: 0}, speed);}
+    });
+    window.goTopMove = function () {
+    var scrollH = $body.scrollTop(),
+    winH = $win.height(),
+    css = {"top": winH * locatioin + "px", "position": "fixed", "left": left, "opacity": opacity};
+    if(scrollH > 20) {
+    $button.css(css);
+    $button.fadeIn("slow");
+    } else {
+    $button.fadeOut("slow");
+     }
+    };
+    $win.on({
+    scroll: function() {goTopMove();},
+    resize: function() {goTopMove();}
+    });
+    } )();
+    //]]>
+</script>
+<!-- 回到頂端按鈕 end, Design by WFU BLOG -->
